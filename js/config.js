@@ -11,7 +11,7 @@ window.PORTFOLIO_CONFIG = {
   owner: {
     name: "Youssef Ayash",
     // Replace with your own photo, e.g. "assets/images/profile.jpg"
-    profileImage: "assets/images/photos/photo-1.jpg",
+    profileImage: "assets/images/profile-placeholder.svg",
     profileAlt: "Profile photo of Youssef Ayash"
   },
 
@@ -25,7 +25,7 @@ window.PORTFOLIO_CONFIG = {
 
   contact: {
     // Your public email address, e.g. "name@example.com". Leave "" until you add it.
-    email: "ayashyousef10@gmail.com",
+    email: "",
     // Optional: a form service URL (for example a Formspree endpoint).
     // If set, the form sends through it. If empty, the form opens the visitor's
     // email app (mailto) addressed to the email above.
@@ -35,8 +35,8 @@ window.PORTFOLIO_CONFIG = {
   // Leave url as "" until you have the real link.
   // Items with optional: true only appear once a url is added.
   socials: [
-    { id: "github", label: "GitHub", url: "https://github.com/yousefayash" },
-    { id: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/yousef-ayash-a7ab84356/?isSelfProfile=true" },
+    { id: "github", label: "GitHub", url: "" },
+    { id: "linkedin", label: "LinkedIn", url: "" },
     { id: "instagram", label: "Instagram", url: "", optional: true },
     { id: "x", label: "X (Twitter)", url: "", optional: true }
   ],
@@ -182,5 +182,16 @@ window.PORTFOLIO_CONFIG = {
 
   // Your own photos (jpg, png, webp). Add more entries or change the order freely.
   // caption is optional and shown under the photo in the viewer.
-
+  photos: [
+    {
+      src: "assets/images/photos/photo-1.jpg",
+      alt: "Youssef Ayash in a light pink polo shirt against a deep blue background",
+      caption: ""
+    },
+    {
+      src: "assets/images/photos/photo-2.jpg",
+      alt: "Youssef Ayash standing in a cream lattice garden structure, wearing a black t-shirt and light blue jeans",
+      caption: ""
+    }
+  ]
 };
