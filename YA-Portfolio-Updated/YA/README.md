@@ -18,10 +18,10 @@ Then open http://localhost:8000.
 
 ```
 index.html            Page structure (sections, dialogs, SEO tags)
-css/styles.css        All styling and responsive rules
+css/styles.css        All styling, theme variants, and responsive rules
 js/config.js          YOUR CONTENT: photo, links, skills, projects, gallery
-js/main.js            Behaviour (menu, modals, lightbox, form, animations)
-assets/images/        Images (placeholders you should replace)
+js/main.js            Behaviour (menu, project details, form, theme, animations)
+admin.html            Local portfolio dashboard (browser storage only)\njs/admin.js           Dashboard behaviour and project editor\ncss/admin.css         Dashboard styling\nassets/images/        Project previews and profile photos
 ```
 
 Almost everything you will want to change lives in `js/config.js`.
@@ -82,3 +82,13 @@ Because it is static, you can host the folder for free on GitHub Pages, Netlify,
 - The Inter font loads from Google Fonts. If it is unavailable (for example offline), the site falls back to your system font.
 - The site respects the "reduce motion" setting of the visitor's device.
 - Project screenshots and the two gallery photos are your real images (resized and compressed). The profile photo is still a placeholder until you replace it.
+
+## Theme switch
+
+Use the Light mode / Dark mode control in the navigation. The preference is saved in the browser using `localStorage`.
+
+## Admin dashboard
+
+Open `admin.html`. The demo password is `change-this-password` and can be changed in `js/admin.js`. The dashboard can edit the project list and profile copy, and export/import a JSON backup.
+
+**Important limitation:** this project is a static front-end. The dashboard password check and saved changes are client-side only; they are not secure authentication, and edits are stored only in the current browser. They will not automatically update the site for other visitors or publish to GitHub. For a genuinely secure admin system and shared content, connect a server-side authentication flow and database, then move project/profile storage to that backend.

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Portfolio Admin | Youssef Ayash</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="login-panel" id="login-panel">
+      <a class="admin-brand" href="index.html"><span>YA</span><i>.</i></a>
+      <p class="eyebrow">PORTFOLIO CONTROL CENTER</p>
+      <h1>Welcome back.</h1>
+      <p class="muted">Sign in to manage the content shown in this browser.</p>
+      <form id="login-form">
+        <label for="admin-password">Admin password</label>
+        <input id="admin-password" type="password" autocomplete="current-password" required>
+        <button class="button button-primary" type="submit">Open dashboard <span aria-hidden="true">→</span></button>
+        <p class="form-message" id="login-message" role="alert"></p>
+      </form>
+      <p class="security-note"><strong>Setup note:</strong> this static demo uses a password check in browser JavaScript. It is not secure authentication and must not be used for sensitive or public production administration without a server-side login.</p>
+      <a class="back-link" href="index.html">← Back to portfolio</a>
+    </section>
+
+    <section class="dashboard" id="dashboard" hidden>
+      <aside class="sidebar">
+        <a class="admin-brand" href="index.html"><span>YA</span><i>.</i></a>
+        <p class="sidebar-label">WORKSPACE</p>
+        <button class="side-link is-active" data-tab="overview">Overview</button>
+        <button class="side-link" data-tab="projects">Projects</button>
+        <button class="side-link" data-tab="profile">Profile & Story</button>
+        <button class="side-link" data-tab="data">Backup & Data</button>
+        <div class="sidebar-bottom"><a class="side-link" href="index.html">View portfolio ↗</a><button class="side-link logout" id="logout-button">Sign out</button></div>
+      </aside>
+      <div class="admin-main">
+        <header class="topbar">
+          <div><p class="eyebrow">ADMINISTRATION</p><h1 id="page-title">Overview</h1></div>
+          <div class="topbar-actions"><span class="status-dot">Local mode</span><button class="button button-secondary" id="admin-theme">Toggle theme</button></div>
+        </header>
+
+        <section class="tab-panel" id="tab-overview">
+          <div class="welcome-card"><div><p class="eyebrow">YOUR SPACE, YOUR STORY</p><h2>Keep your portfolio current.</h2><p class="muted">Update your featured work and personal introduction. Changes are saved in this browser.</p></div><div class="welcome-mark" aria-hidden="true">YA<span>.</span></div></div>
+          <div class="stat-grid">
+            <article class="stat-card"><span class="stat-label">Featured projects</span><strong id="stat-projects">6</strong><span class="stat-foot">In the portfolio list</span></article>
+            <article class="stat-card"><span class="stat-label">Skills groups</span><strong id="stat-skills">5</strong><span class="stat-foot">Loaded from config</span></article>
+            <article class="stat-card"><span class="stat-label">Theme</span><strong id="stat-theme">Dark</strong><span class="stat-foot">Saved preference</span></article>
+          </div>
+          <div class="content-card"><div class="card-heading"><div><p class="eyebrow">QUICK ACTIONS</p><h2>What would you like to do?</h2></div></div><div class="quick-grid"><button class="quick-action" data-go="projects"><span>↗</span><strong>Manage projects</strong><small>Edit descriptions, tech stack, and links</small></button><button class="quick-action" data-go="profile"><span>✎</span><strong>Update your story</strong><small>Keep your intro and journey in sync</small></button><button class="quick-action" data-go="data"><span>⇩</span><strong>Back up your data</strong><small>Export or restore portfolio settings</small></button></div></div>
+          <div class="notice"><strong>Heads up</strong><p>Because this is a static website, edits made here are stored in this browser only. To publish edits for every visitor, update the source files and push them to your hosting provider, or connect a secured backend/CMS.</p></div>
+        </section>
+
+        <section class="tab-panel" id="tab-projects" hidden>
+          <div class="section-toolbar"><div><p class="eyebrow">PORTFOLIO CONTENT</p><h2>Projects</h2><p class="muted">Manage the six projects shown on your public page.</p></div><button class="button button-primary" id="add-project">＋ Add project</button></div>
+          <div class="project-admin-list" id="project-admin-list"></div>
+          <form class="edit-card" id="project-form" hidden>
+            <div class="card-heading"><div><p class="eyebrow">PROJECT EDITOR</p><h2 id="project-form-title">Add project</h2></div><button class="icon-button" id="cancel-project" type="button" aria-label="Close editor">×</button></div>
+            <input type="hidden" id="project-id">
+            <div class="form-grid">
+              <div class="form-field"><label for="project-name">Project name</label><input id="project-name" required maxlength="70"></div>
+              <div class="form-field"><label for="project-image">Image path</label><input id="project-image" required placeholder="assets/images/projects/example.webp"></div>
+              <div class="form-field full"><label for="project-summary">Short description</label><textarea id="project-summary" rows="3" required maxlength="320"></textarea></div>
+              <div class="form-field full"><label for="project-tech">Technologies (comma separated)</label><input id="project-tech" required placeholder="HTML5, CSS3, JavaScript"></div>
+              <div class="form-field"><label for="project-live">Live demo URL</label><input id="project-live" type="url" placeholder="https://..."></div>
+              <div class="form-field"><label for="project-source">Source code URL</label><input id="project-source" type="url" placeholder="https://github.com/..."></div>
+              <div class="form-field full"><label for="project-overview">Project overview</label><textarea id="project-overview" rows="4"></textarea></div>
+            </div>
+            <div class="form-actions"><button class="button button-primary" type="submit">Save project</button><button class="button button-secondary" id="cancel-project-bottom" type="button">Cancel</button></div>
+            <p class="form-message" id="project-message" role="status"></p>
+          </form>
+        </section>
+
+        <section class="tab-panel" id="tab-profile" hidden>
+          <div class="section-toolbar"><div><p class="eyebrow">PERSONAL BRAND</p><h2>Profile & story</h2><p class="muted">Edit the main introduction and journey summary.</p></div></div>
+          <form class="edit-card" id="profile-form">
+            <div class="form-grid">
+              <div class="form-field full"><label for="profile-name">Name shown in hero</label><input id="profile-name" required maxlength="80"></div>
+              <div class="form-field full"><label for="profile-tagline">Hero description</label><textarea id="profile-tagline" rows="3" required maxlength="400"></textarea></div>
+              <div class="form-field full"><label for="profile-journey">My Journey introduction</label><textarea id="profile-journey" rows="5" required maxlength="800"></textarea></div>
+            </div>
+            <div class="form-actions"><button class="button button-primary" type="submit">Save profile</button><button class="button button-secondary" id="reset-profile" type="button">Reset to original</button></div>
+            <p class="form-message" id="profile-message" role="status"></p>
+          </form>
+          <div class="notice"><strong>Keep it authentic</strong><p>Only list technologies and experience you can confidently discuss. The four-year timeline is currently part of the portfolio story.</p></div>
+        </section>
+
+        <section class="tab-panel" id="tab-data" hidden>
+          <div class="section-toolbar"><div><p class="eyebrow">PORTABILITY</p><h2>Backup & data</h2><p class="muted">Download a copy before making major edits.</p></div></div>
+          <div class="content-card data-card"><div><h3>Export portfolio data</h3><p class="muted">Download your projects and profile settings as a JSON file.</p></div><button class="button button-primary" id="export-data">Export JSON</button></div>
+          <div class="content-card data-card"><div><h3>Import portfolio data</h3><p class="muted">Restore a JSON backup created by this dashboard.</p></div><label class="button button-secondary file-button">Choose JSON file<input id="import-data" type="file" accept="application/json"></label></div>
+          <div class="content-card data-card danger-card"><div><h3>Reset local edits</h3><p class="muted">Remove saved browser overrides and return to the default content in config.js.</p></div><button class="button button-danger" id="reset-data">Reset overrides</button></div>
+          <p class="form-message" id="data-message" role="status"></p>
+        </section>
+        <footer class="admin-footer">Youssef Ayash · Portfolio control center <span>Local browser storage</span></footer>
+      </div>
+    </section>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

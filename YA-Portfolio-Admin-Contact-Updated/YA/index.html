@@ -23,7 +23,6 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
   <header class="site-header" id="site-header">
     <nav class="nav container" aria-label="Main navigation">
       <a class="logo" href="#home" aria-label="Youssef Ayash, back to top">YA<span class="logo-dot">.</span></a>
@@ -33,12 +32,13 @@
         <li><a href="#about" data-nav="about">About Me</a></li>
         <li><a href="#skills" data-nav="skills">Skills</a></li>
         <li><a href="#projects" data-nav="projects">Projects</a></li>
-        <li><a href="#photos" data-nav="photos">My Photos</a></li>
+        <li><a href="#journey" data-nav="journey">My Journey</a></li>
         <li><a href="#contact" data-nav="contact">Contact</a></li>
         <li class="nav-cta-mobile"><a class="btn btn-primary" href="#contact">Let's Talk</a></li>
       </ul>
 
       <a class="btn btn-primary nav-cta" href="#contact">Let's Talk</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle theme"><span aria-hidden="true">☼</span><span class="theme-toggle-label">Light mode</span></button>
 
       <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
         <span class="menu-bar"></span>
@@ -63,7 +63,7 @@
             <span class="availability-dot" id="availability-dot"></span>
             <span id="availability-text"></span>
           </p>
-          <h1 class="hero-title" id="hero-title">Hi, I'm <span class="text-gradient">Youssef Ayash.</span></h1>
+          <h1 class="hero-title" id="hero-title">Hi, I'm <span class="text-gradient" data-owner-name>Youssef Ayash.</span></h1>
           <p class="hero-role">Front-End Developer</p>
           <p class="hero-lead">I build responsive, modern web experiences with clean code, thoughtful design, and attention to detail.</p>
           <div class="hero-actions">
@@ -74,7 +74,7 @@
 
         <div class="hero-visual">
           <div class="photo-frame">
-            <img class="js-profile-image" src="ئ" alt="Profile photo of Youssef Ayash" width="480" height="560">
+            <img class="js-profile-image" src="assets/images/photos/photo-1.jpg" alt="Profile photo of Youssef Ayash" width="480" height="560">
           </div>
           <div class="floating-chip" aria-hidden="true">
             <span>HTML</span><span>CSS</span><span>JS</span>
@@ -88,7 +88,7 @@
       <div class="container about-grid">
         <div class="about-image reveal">
           <div class="photo-frame photo-frame-small">
-            <img class="js-profile-image" src="assets/images/profile-placeholder.svg" alt="Profile photo of Youssef Ayash" width="480" height="560" loading="lazy">
+            <img class="js-profile-image" src="assets/images/photos/photo-2.jpg" alt="Profile photo of Youssef Ayash" width="480" height="560" loading="lazy">
           </div>
         </div>
 
@@ -146,15 +146,72 @@
       </div>
     </section>
 
-    <!-- PHOTOS -->
-    <section class="section" id="photos" aria-labelledby="photos-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">My Photos</p>
-          <h2 class="section-title" id="photos-title">A little more about me</h2>
-          <p class="section-intro">Moments and places I enjoy. Select a photo to view it larger.</p>
+    <!-- MY JOURNEY -->
+    <section class="journey-section" id="journey" aria-labelledby="journey-title">
+      <div class="journey-container">
+        <header class="journey-heading reveal">
+          <span class="journey-label">THE STORY SO FAR</span>
+          <h2 id="journey-title">My <span>Journey</span></h2>
+          <h3>Four years of learning, building, and getting better.</h3>
+          <p>
+            I'm Youssef Ayash, a front-end developer who enjoys turning ideas into useful,
+            polished web experiences. Over the last four years, I've grown from learning the
+            basics of the web to building multi-page projects, working with APIs, and exploring
+            how the front end connects to real data. I'm still learning, and every project gives
+            me a new problem to solve.
+          </p>
+          <div class="journey-highlights" aria-label="Journey highlights">
+            <div class="journey-highlight"><strong>04+</strong><span>Years learning & building</span></div>
+            <div class="journey-highlight"><strong>HTML · CSS · JS</strong><span>Core toolkit</span></div>
+            <div class="journey-highlight"><strong>6</strong><span>Featured projects</span></div>
+          </div>
         </header>
-        <div class="gallery-grid" id="gallery-grid"></div>
+        <div class="journey-timeline">
+          <div class="journey-line" aria-hidden="true"></div>
+          <article class="journey-item">
+            <div class="journey-card journey-left reveal">
+              <span class="journey-number">01 / THE START</span><h3>Curiosity became a skill</h3>
+              <h4>Understanding how websites work</h4>
+              <p>I started by exploring websites and learning how structure, styling, and browser behaviour come together. The goal was simple: stop only looking at websites and start building them.</p>
+              <div class="journey-tags"><span>HTML</span><span>Web basics</span><span>Practice</span></div>
+            </div><div class="journey-marker" aria-hidden="true">01</div><div class="journey-empty"></div>
+          </article>
+          <article class="journey-item">
+            <div class="journey-empty"></div><div class="journey-marker" aria-hidden="true">02</div>
+            <div class="journey-card journey-right reveal">
+              <span class="journey-number">02 / THE FOUNDATIONS</span><h3>Making ideas look right</h3>
+              <h4>HTML5, CSS3 & responsive design</h4>
+              <p>I learned to build page layouts, use spacing and typography intentionally, and adapt interfaces to mobile, tablet, and desktop instead of designing for one screen only.</p>
+              <div class="journey-tags"><span>HTML5</span><span>CSS3</span><span>Responsive UI</span></div>
+            </div>
+          </article>
+          <article class="journey-item">
+            <div class="journey-card journey-left reveal">
+              <span class="journey-number">03 / INTERACTION</span><h3>Bringing pages to life</h3>
+              <h4>JavaScript, DOM & async code</h4>
+              <p>I moved beyond static pages with events, DOM manipulation, form validation, Fetch, and async/await. I learned to think about what happens when a person actually uses an interface.</p>
+              <div class="journey-tags"><span>JavaScript</span><span>DOM & Events</span><span>Fetch API</span></div>
+            </div><div class="journey-marker" aria-hidden="true">03</div><div class="journey-empty"></div>
+          </article>
+          <article class="journey-item">
+            <div class="journey-empty"></div><div class="journey-marker" aria-hidden="true">04</div>
+            <div class="journey-card journey-right reveal">
+              <span class="journey-number">04 / REAL PROJECTS</span><h3>Learning by shipping</h3>
+              <h4>Projects, Git, APIs & data</h4>
+              <p>I applied what I learned to projects like a school website, an e-commerce experience, and product-style landing pages. I also explored Git/GitHub and the basics of connecting interfaces to backend services and databases.</p>
+              <div class="journey-tags"><span>Git & GitHub</span><span>APIs</span><span>PostgreSQL basics</span></div>
+            </div>
+          </article>
+          <article class="journey-item">
+            <div class="journey-card journey-left reveal">
+              <span class="journey-number">05 / RIGHT NOW</span><h3>Building with intention</h3>
+              <h4>Cleaner code, stronger fundamentals</h4>
+              <p>Today I'm focused on making my work more consistent: clearer code, accessible interactions, useful details, and reliable responsive layouts. My next step is to strengthen JavaScript and continue progressing toward professional front-end development.</p>
+              <div class="journey-tags"><span>Clean code</span><span>Accessibility</span><span>Continuous learning</span></div>
+            </div><div class="journey-marker" aria-hidden="true">05</div><div class="journey-empty"></div>
+          </article>
+        </div>
+        <div class="journey-footer reveal"><span class="journey-footer-dot"></span><p>Four years in, and still curious about what I can build next.</p></div>
       </div>
     </section>
 
@@ -203,7 +260,7 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <a class="logo" href="#home" aria-label="Back to top">YA<span class="logo-dot">.</span></a>
-        <p>Front-End Developer building responsive, modern web experiences.</p>
+        <p>Front-end developer focused on responsive interfaces, thoughtful details, and continuous learning.</p>
       </div>
 
       <nav class="footer-nav" aria-label="Footer navigation">
@@ -211,8 +268,9 @@
         <a href="#about">About Me</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#photos">My Photos</a>
+        <a href="#journey">My Journey</a>
         <a href="#contact">Contact</a>
+        <a href="admin.html">Admin</a>
       </nav>
 
       <ul class="footer-socials" id="footer-socials" aria-label="Social links"></ul>
@@ -232,25 +290,8 @@
     <div class="project-dialog-body" id="project-dialog-body"></div>
   </dialog>
 
-  <!-- Photo lightbox -->
-  <dialog class="dialog lightbox" id="lightbox" aria-label="Photo viewer">
-    <button class="lightbox-btn lightbox-close" type="button" id="lightbox-close" aria-label="Close photo viewer">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <button class="lightbox-btn lightbox-prev" type="button" id="lightbox-prev" aria-label="Previous photo">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
-    </button>
-    <button class="lightbox-btn lightbox-next" type="button" id="lightbox-next" aria-label="Next photo">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
-    </button>
-    <figure class="lightbox-figure">
-      <img id="lightbox-image" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
-      <figcaption id="lightbox-caption"></figcaption>
-    </figure>
-  </dialog>
-
   <noscript>
-    <p class="noscript-note">This portfolio uses JavaScript to show projects, skills, and photos. Please enable JavaScript to see everything.</p>
+    <p class="noscript-note">This portfolio uses JavaScript to show projects and skills. Please enable JavaScript to see everything.</p>
   </noscript>
 
   <script src="js/config.js"></script>

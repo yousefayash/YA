@@ -7,6 +7,29 @@
   "use strict";
 
   const config = window.PORTFOLIO_CONFIG;
+  if (config) {
+    try {
+      const savedProjects = localStorage.getItem("ya_portfolio_projects");
+      if (savedProjects) {
+        const parsedProjects = JSON.parse(savedProjects);
+        if (Array.isArray(parsedProjects)) config.projects = parsedProjects;
+      }
+      const savedSettings = JSON.parse(localStorage.getItem("ya_portfolio_settings") || "{}");
+      if (savedSettings.ownerName) {
+        document.querySelectorAll("[data-owner-name]").forEach((node) => node.textContent = savedSettings.ownerName);
+      }
+      if (savedSettings.heroLead) {
+        const lead = document.querySelector(".hero-lead");
+        if (lead) lead.textContent = savedSettings.heroLead;
+      }
+      if (savedSettings.journeyIntro) {
+        const intro = document.querySelector(".journey-heading > p");
+        if (intro) intro.textContent = savedSettings.journeyIntro;
+      }
+    } catch (error) {
+      console.warn("Saved portfolio settings could not be loaded.", error);
+    }
+  }
   if (!config) {
     console.error("Portfolio config not found. Make sure js/config.js loads before js/main.js.");
     return;
@@ -376,71 +399,15 @@
     });
   }
 
-  /* ---------- Photo gallery + lightbox ---------- */
-
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImage = document.getElementById("lightbox-image");
-  const lightboxCaption = document.getElementById("lightbox-caption");
-  let lightboxIndex = 0;
-  let lightboxOpener = null;
-
-  function renderGallery() {
-    const grid = document.getElementById("gallery-grid");
-    config.photos.forEach((photo, index) => {
-      const button = h(
-        "button",
-        { class: "gallery-item reveal", type: "button", "aria-haspopup": "dialog", style: "transition-delay:" + (index % 3) * 80 + "ms" },
-        h("img", { src: photo.src, alt: photo.alt, width: "400", height: "500", loading: "lazy" })
-      );
-      button.addEventListener("click", () => openLightbox(index, button));
-      grid.append(button);
-    });
-  }
-
-  function showLightboxPhoto(index) {
-    const total = config.photos.length;
-    lightboxIndex = (index + total) % total;
-    const photo = config.photos[lightboxIndex];
-    lightboxImage.src = photo.src;
-    lightboxImage.alt = photo.alt;
-    lightboxCaption.textContent = (photo.caption ? photo.caption + " - " : "") + (lightboxIndex + 1) + " / " + total;
-  }
-
-  function openLightbox(index, opener) {
-    lightboxOpener = opener;
-    showLightboxPhoto(index);
-    lightbox.showModal();
-    pageIsLocked(true);
-  }
-
-  function setupLightbox() {
-    document.getElementById("lightbox-close").addEventListener("click", () => lightbox.close());
-    document.getElementById("lightbox-prev").addEventListener("click", () => showLightboxPhoto(lightboxIndex - 1));
-    document.getElementById("lightbox-next").addEventListener("click", () => showLightboxPhoto(lightboxIndex + 1));
-
-    lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) lightbox.close();
-    });
-    lightbox.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowLeft") showLightboxPhoto(lightboxIndex - 1);
-      if (event.key === "ArrowRight") showLightboxPhoto(lightboxIndex + 1);
-    });
-    lightbox.addEventListener("close", () => {
-      pageIsLocked(false);
-      if (lightboxOpener) lightboxOpener.focus();
-    });
-  }
-
   /* ---------- Contact form ---------- */
 
   function setupContactForm() {
     const form = document.getElementById("contact-form");
     const status = document.getElementById("form-status");
     const submitButton = document.getElementById("contact-submit");
-    const endpoint = hasUrl(config.contact.formEndpoint) ? config.contact.formEndpoint.trim() : "";
+    const endpoint = "/api/messages";
     const email = hasUrl(config.contact.email) ? config.contact.email.trim() : "";
-
-    if (!endpoint && email) submitButton.textContent = "Send via Email App";
+    submitButton.textContent = "Send Message";
 
     const rules = {
       name: { test: (value) => value.length >= 2, message: "Please enter your name (at least 2 characters)." },
@@ -488,12 +455,15 @@
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(data)
         });
-        if (!response.ok) throw new Error("Request failed with status " + response.status);
+        if (!response.ok) {
+          const result = await response.json().catch(() => ({}));
+          throw new Error(result.error || "Request failed with status " + response.status);
+        }
         form.reset();
-        setStatus("success", "Thank you! Your message was sent.");
+        setStatus("success", "Your data was registered successfully and is now visible in the dashboard.");
       } catch (error) {
         console.error(error);
-        setStatus("error", "Sorry, the message could not be sent. Please try again later" + (email ? " or email " + email + " directly." : "."));
+        setStatus("error", "Sorry, your message could not be saved. Please try again later" + (email ? " or email " + email + " directly." : "."));
       } finally {
         submitButton.disabled = false;
       }
@@ -517,24 +487,51 @@
         message: form.elements.message.value.trim()
       };
 
-      if (endpoint) sendWithService(data);
-      else if (email) openEmailApp(data);
-      else setStatus("error", "This form isn't connected yet. Please check back soon or reach out through the links on this page.");
+      sendWithService(data);
     });
+  }
+
+  /* ---------- Theme ---------- */
+
+  function setupThemeToggle() {
+    const button = document.getElementById("theme-toggle");
+    if (!button) return;
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem("ya_portfolio_theme");
+    if (savedTheme === "light" || savedTheme === "dark") root.dataset.theme = savedTheme;
+    else root.dataset.theme = "dark";
+
+    function syncButton() {
+      const light = root.dataset.theme === "light";
+      button.setAttribute("aria-label", light ? "Switch to dark theme" : "Switch to light theme");
+      button.title = light ? "Switch to dark theme" : "Switch to light theme";
+      const label = button.querySelector(".theme-toggle-label");
+      if (label) label.textContent = light ? "Dark mode" : "Light mode";
+      const icon = button.querySelector("[aria-hidden='true']");
+      if (icon) icon.textContent = light ? "☾" : "☼";
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = light ? "#f4f7fb" : "#07090D";
+    }
+
+    button.addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+      localStorage.setItem("ya_portfolio_theme", root.dataset.theme);
+      syncButton();
+    });
+    syncButton();
   }
 
   /* ---------- Start ---------- */
 
+  setupThemeToggle();
   renderOwnerDetails();
   renderSkills();
   renderProjects();
-  renderGallery();
   renderContactLinks();
   setupNavigation();
   setupActiveSection();
   setupScrollEffects();
   setupProjectDialog();
-  setupLightbox();
   setupContactForm();
   setupScrollReveal(); // last, so it also covers the cards created above
 })();

@@ -1,17 +1,8 @@
-/* ==========================================================================
-   PORTFOLIO CONFIGURATION
-   Edit this file to update your content. No other file needs to change for:
-   profile photo, availability, email, social links, skills, projects, photos.
-
-   Rule for links: leave a URL as "" (empty) when it isn't ready yet.
-   The matching button is then disabled (projects/contact) or hidden (footer).
-   ========================================================================== */
-
 window.PORTFOLIO_CONFIG = {
   owner: {
     name: "Youssef Ayash",
     // Replace with your own photo, e.g. "assets/images/profile.jpg"
-    profileImage: "assets/images/profile-placeholder.svg",
+    profileImage: "assets/images/photos/photo-1.jpg",
     profileAlt: "Profile photo of Youssef Ayash"
   },
 
@@ -25,7 +16,7 @@ window.PORTFOLIO_CONFIG = {
 
   contact: {
     // Your public email address, e.g. "name@example.com". Leave "" until you add it.
-    email: "",
+    email: "ayashyousef10@gmail.com",
     // Optional: a form service URL (for example a Formspree endpoint).
     // If set, the form sends through it. If empty, the form opens the visitor's
     // email app (mailto) addressed to the email above.
@@ -35,8 +26,8 @@ window.PORTFOLIO_CONFIG = {
   // Leave url as "" until you have the real link.
   // Items with optional: true only appear once a url is added.
   socials: [
-    { id: "github", label: "GitHub", url: "" },
-    { id: "linkedin", label: "LinkedIn", url: "" },
+    { id: "github", label: "GitHub", url: "https://github.com/yousefayash" },
+    { id: "linkedin", label: "LinkedIn", url: "https://www.linkedin.com/in/yousef-ayash-a7ab84356/?isSelfProfile=true" },
     { id: "instagram", label: "Instagram", url: "", optional: true },
     { id: "x", label: "X (Twitter)", url: "", optional: true }
   ],
@@ -178,20 +169,35 @@ window.PORTFOLIO_CONFIG = {
         "Keeping layouts clean and readable on different screen sizes"
       ]
     }
-  ],
-
-  // Your own photos (jpg, png, webp). Add more entries or change the order freely.
-  // caption is optional and shown under the photo in the viewer.
-  photos: [
+    ,
     {
-      src: "assets/images/photos/photo-1.jpg",
-      alt: "Youssef Ayash in a light pink polo shirt against a deep blue background",
-      caption: ""
+      id: "dark-code",
+      name: "Dark Code",
+      summary: "A dark, developer-focused multi-page website concept with a clear service presentation and blue accent details.",
+      image: "assets/images/projects/dark-code.svg",
+      imageAlt: "Dark Code website concept cover",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
+      liveUrl: "",
+      sourceUrl: "",
+      overview: "A multi-page website concept built around a developer community identity. The focus is on clear navigation, a consistent visual system, and layouts that stay useful on smaller screens.",
+      features: ["Multi-page navigation structure", "Dark interface with blue accents", "Reusable cards and buttons", "Responsive layout patterns"],
+      screenshots: [{ src: "assets/images/projects/dark-code.svg", alt: "Dark Code concept cover" }],
+      learnings: ["Keeping visual styles consistent across pages", "Planning reusable components in plain HTML and CSS"]
     },
     {
-      src: "assets/images/photos/photo-2.jpg",
-      alt: "Youssef Ayash standing in a cream lattice garden structure, wearing a black t-shirt and light blue jeans",
-      caption: ""
+      id: "nova-academy",
+      name: "Nova Academy",
+      summary: "An education landing page concept for presenting courses, learning paths, and student-focused information.",
+      image: "assets/images/projects/nova-academy.svg",
+      imageAlt: "Nova Academy website concept cover",
+      technologies: ["HTML5", "CSS3", "JavaScript", "UI Design"],
+      liveUrl: "",
+      sourceUrl: "",
+      overview: "A course and academy website concept that organizes learning information into an easy-to-scan page. The interface aims to make course discovery straightforward without overwhelming visitors.",
+      features: ["Course-focused landing page", "Clear information hierarchy", "Responsive card layout", "Simple calls to action"],
+      screenshots: [{ src: "assets/images/projects/nova-academy.svg", alt: "Nova Academy concept cover" }],
+      learnings: ["Designing around a clear user goal", "Balancing content density with readable layouts"]
     }
-  ]
+  ],
+
 };
