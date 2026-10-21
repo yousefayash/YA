@@ -1,8 +1,4 @@
-/* ==========================================================================
-   Youssef Ayash - Portfolio behaviour
-   All content comes from js/config.js. Sections of this file:
-   helpers, rendering, navigation, scroll effects, dialogs, contact form.
-   ========================================================================== */
+
 (function () {
   "use strict";
 

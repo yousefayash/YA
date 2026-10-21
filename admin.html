@@ -15,14 +15,14 @@
       <a class="admin-brand" href="index.html"><span>YA</span><i>.</i></a>
       <p class="eyebrow">PORTFOLIO CONTROL CENTER</p>
       <h1>Welcome back.</h1>
-      <p class="muted">Sign in to manage the content shown in this browser.</p>
+      <p class="muted">Sign in to manage your portfolio and view messages sent by visitors.</p>
       <form id="login-form">
         <label for="admin-password">Admin password</label>
         <input id="admin-password" type="password" autocomplete="current-password" required>
         <button class="button button-primary" type="submit">Open dashboard <span aria-hidden="true">→</span></button>
         <p class="form-message" id="login-message" role="alert"></p>
       </form>
-      <p class="security-note"><strong>Setup note:</strong> this static demo uses a password check in browser JavaScript. It is not secure authentication and must not be used for sensitive or public production administration without a server-side login.</p>
+      <p class="security-note">Admin access is verified by the server. Default password: <strong>YA</strong>. Set <code>ADMIN_PASSWORD</code> to change it.</p>
       <a class="back-link" href="index.html">← Back to portfolio</a>
     </section>
 
@@ -33,13 +33,14 @@
         <button class="side-link is-active" data-tab="overview">Overview</button>
         <button class="side-link" data-tab="projects">Projects</button>
         <button class="side-link" data-tab="profile">Profile & Story</button>
+        <button class="side-link" data-tab="messages">Messages <span id="message-count" class="message-count">0</span></button>
         <button class="side-link" data-tab="data">Backup & Data</button>
         <div class="sidebar-bottom"><a class="side-link" href="index.html">View portfolio ↗</a><button class="side-link logout" id="logout-button">Sign out</button></div>
       </aside>
       <div class="admin-main">
         <header class="topbar">
           <div><p class="eyebrow">ADMINISTRATION</p><h1 id="page-title">Overview</h1></div>
-          <div class="topbar-actions"><span class="status-dot">Local mode</span><button class="button button-secondary" id="admin-theme">Toggle theme</button></div>
+          <div class="topbar-actions"><span class="status-dot">Connected</span><button class="button button-secondary" id="admin-theme">Toggle theme</button></div>
         </header>
 
         <section class="tab-panel" id="tab-overview">
@@ -47,10 +48,14 @@
           <div class="stat-grid">
             <article class="stat-card"><span class="stat-label">Featured projects</span><strong id="stat-projects">6</strong><span class="stat-foot">In the portfolio list</span></article>
             <article class="stat-card"><span class="stat-label">Skills groups</span><strong id="stat-skills">5</strong><span class="stat-foot">Loaded from config</span></article>
-            <article class="stat-card"><span class="stat-label">Theme</span><strong id="stat-theme">Dark</strong><span class="stat-foot">Saved preference</span></article>
+            <article class="stat-card"><span class="stat-label">Registered messages</span><strong id="stat-messages">0</strong><span class="stat-foot">Saved from the contact form</span></article>
+          </div>
+          <div class="content-card registration-card" id="registration-status-card">
+            <div class="card-heading"><div><p class="eyebrow">REGISTRATION STATUS</p><h2 id="registration-status-title">No registrations yet</h2></div><span class="registration-badge" id="registration-badge">Waiting</span></div>
+            <p class="muted" id="registration-status-text">When someone submits the contact form, their data will appear here and in Messages.</p>
           </div>
           <div class="content-card"><div class="card-heading"><div><p class="eyebrow">QUICK ACTIONS</p><h2>What would you like to do?</h2></div></div><div class="quick-grid"><button class="quick-action" data-go="projects"><span>↗</span><strong>Manage projects</strong><small>Edit descriptions, tech stack, and links</small></button><button class="quick-action" data-go="profile"><span>✎</span><strong>Update your story</strong><small>Keep your intro and journey in sync</small></button><button class="quick-action" data-go="data"><span>⇩</span><strong>Back up your data</strong><small>Export or restore portfolio settings</small></button></div></div>
-          <div class="notice"><strong>Heads up</strong><p>Because this is a static website, edits made here are stored in this browser only. To publish edits for every visitor, update the source files and push them to your hosting provider, or connect a secured backend/CMS.</p></div>
+          <div class="notice"><strong>Heads up</strong><p>Contact form submissions are stored on the server and appear in Messages. Project and profile edits are saved in this browser only; they do not automatically publish to every visitor.</p></div>
         </section>
 
         <section class="tab-panel" id="tab-projects" hidden>
@@ -87,6 +92,11 @@
           <div class="notice"><strong>Keep it authentic</strong><p>Only list technologies and experience you can confidently discuss. The four-year timeline is currently part of the portfolio story.</p></div>
         </section>
 
+        <section class="tab-panel" id="tab-messages" hidden>
+          <div class="section-toolbar"><div><p class="eyebrow">CONTACT INBOX</p><h2>Messages</h2><p class="muted" id="messages-status">Sign in to load registered contact data.</p></div><button class="button button-secondary" id="refresh-messages" type="button">Refresh</button></div>
+          <div class="message-list" id="message-list"></div>
+        </section>
+
         <section class="tab-panel" id="tab-data" hidden>
           <div class="section-toolbar"><div><p class="eyebrow">PORTABILITY</p><h2>Backup & data</h2><p class="muted">Download a copy before making major edits.</p></div></div>
           <div class="content-card data-card"><div><h3>Export portfolio data</h3><p class="muted">Download your projects and profile settings as a JSON file.</p></div><button class="button button-primary" id="export-data">Export JSON</button></div>
@@ -94,7 +104,7 @@
           <div class="content-card data-card danger-card"><div><h3>Reset local edits</h3><p class="muted">Remove saved browser overrides and return to the default content in config.js.</p></div><button class="button button-danger" id="reset-data">Reset overrides</button></div>
           <p class="form-message" id="data-message" role="status"></p>
         </section>
-        <footer class="admin-footer">Youssef Ayash · Portfolio control center <span>Local browser storage</span></footer>
+        <footer class="admin-footer">Youssef Ayash · Portfolio control center <span>Server-connected inbox</span></footer>
       </div>
     </section>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>

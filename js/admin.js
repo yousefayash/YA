@@ -3,7 +3,6 @@
   const STORAGE_PROJECTS = "ya_portfolio_projects";
   const STORAGE_SETTINGS = "ya_portfolio_settings";
   const STORAGE_THEME = "ya_portfolio_theme";
-  const DEFAULT_PASSWORD = "change-this-password"; // Change this only for a local demo; it is not server security.
   const config = window.PORTFOLIO_CONFIG;
   const $ = (selector) => document.querySelector(selector);
   const loginPanel = $("#login-panel");
@@ -44,13 +43,13 @@
   function goToTab(name) {
     document.querySelectorAll(".tab-panel").forEach((panel) => { panel.hidden = panel.id !== "tab-" + name; });
     document.querySelectorAll("[data-tab]").forEach((button) => button.classList.toggle("is-active", button.dataset.tab === name));
-    const titles = { overview: "Overview", projects: "Projects", profile: "Profile & story", data: "Backup & data" };
+    const titles = { overview: "Overview", projects: "Projects", profile: "Profile & story", messages: "Messages", data: "Backup & data" };
     safeText($("#page-title"), titles[name] || "Overview");
   }
   function updateStats() {
     safeText($("#stat-projects"), projects.length);
     safeText($("#stat-skills"), config.skills.length);
-    safeText($("#stat-theme"), document.documentElement.dataset.theme === "light" ? "Light" : "Dark");
+    safeText($("#stat-messages"), $("#message-count") ? $("#message-count").textContent : "0");
   }
   function renderProjects() {
     projectList.replaceChildren();
@@ -120,26 +119,59 @@
     updateStats();
   }
 
-  loginForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if ($("#admin-password").value === DEFAULT_PASSWORD) {
-      loginPanel.hidden = true;
-      dashboard.hidden = false;
-      loadData();
-      renderProjects();
-      readSettingsForm();
-      updateStats();
-      goToTab("overview");
-      return;
-    }
-    loginMessage.textContent = "That password doesn't match. Update DEFAULT_PASSWORD in js/admin.js for your local demo.";
-    $("#admin-password").select();
+  async function loadMessages() {
+    const list = $("#message-list"); const status = $("#messages-status");
+    if (!list) return;
+    status.textContent = "Loading messages...";
+    try {
+      const response = await fetch("/api/admin/messages", { credentials: "same-origin", headers: { Accept: "application/json" } });
+      if (response.status === 401) throw new Error("Your session expired. Please sign in again.");
+      if (!response.ok) throw new Error("Could not load messages.");
+      const messages = await response.json(); list.replaceChildren(); $("#message-count").textContent = String(messages.length); $("#stat-messages").textContent = String(messages.length);
+      const statusTitle = $("#registration-status-title"); const statusText = $("#registration-status-text"); const badge = $("#registration-badge");
+      if (messages.length) {
+        const latest = messages[0];
+        statusTitle.textContent = "Your data has been registered";
+        statusText.textContent = "Latest registration: " + latest.name + " · " + latest.email + " · " + new Date(latest.createdAt).toLocaleString();
+        badge.textContent = "Registered";
+        badge.classList.add("is-registered");
+      } else {
+        statusTitle.textContent = "No registrations yet";
+        statusText.textContent = "When someone submits the contact form, their data will appear here and in Messages.";
+        badge.textContent = "Waiting";
+        badge.classList.remove("is-registered");
+      }
+      if (!messages.length) { const empty = document.createElement("div"); empty.className = "content-card"; empty.textContent = "No messages yet. New contact form submissions will appear here."; list.append(empty); }
+      messages.forEach((item) => {
+        const card = document.createElement("article"); card.className = "message-card";
+        const head = document.createElement("div"); head.className = "message-head";
+        const title = document.createElement("h3"); title.textContent = item.subject;
+        const date = document.createElement("time"); date.textContent = new Date(item.createdAt).toLocaleString(); head.append(title, date);
+        const sender = document.createElement("p"); sender.className = "message-sender"; sender.textContent = item.name + " · " + item.email;
+        const body = document.createElement("p"); body.className = "message-body"; body.textContent = item.message;
+        const actions = document.createElement("div"); actions.className = "message-actions";
+        const reply = document.createElement("a"); reply.className = "button button-secondary"; reply.textContent = "Reply by email"; reply.href = "mailto:" + encodeURIComponent(item.email) + "?subject=" + encodeURIComponent("Re: " + item.subject);
+        const remove = document.createElement("button"); remove.className = "button button-danger"; remove.type = "button"; remove.textContent = "Delete";
+        remove.addEventListener("click", async () => { if (!window.confirm("Delete this message permanently?")) return; try { const res = await fetch("/api/admin/messages/" + item.id, { method: "DELETE", credentials: "same-origin" }); if (!res.ok) throw new Error(); await loadMessages(); } catch (_) { status.textContent = "Could not delete this message. Please try again."; } });
+        actions.append(reply, remove); card.append(head, sender, body, actions); list.append(card);
+      });
+      status.textContent = messages.length + " message" + (messages.length === 1 ? "" : "s") + " loaded.";
+    } catch (error) { status.textContent = error.message || "Could not load messages."; }
+  }
+
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault(); const button = loginForm.querySelector("button[type='submit']"); button.disabled = true; loginMessage.textContent = "Signing in...";
+    try {
+      const response = await fetch("/api/admin/login", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ password: $("#admin-password").value }) });
+      const result = await response.json().catch(() => ({})); if (!response.ok) throw new Error(result.error || "Sign-in failed.");
+      loginPanel.hidden = true; dashboard.hidden = false; loadData(); renderProjects(); readSettingsForm(); updateStats(); goToTab("overview"); await loadMessages();
+    } catch (error) { loginMessage.textContent = error.message || "Could not sign in. Check the server configuration."; $("#admin-password").select(); }
+    finally { button.disabled = false; }
   });
-  document.querySelectorAll("[data-tab]").forEach((button) => button.addEventListener("click", () => goToTab(button.dataset.tab)));
+  document.querySelectorAll("[data-tab]").forEach((button) => button.addEventListener("click", () => { goToTab(button.dataset.tab); if (button.dataset.tab === "messages") loadMessages(); }));
   document.querySelectorAll("[data-go]").forEach((button) => button.addEventListener("click", () => goToTab(button.dataset.go)));
-  $("#logout-button").addEventListener("click", () => {
-    dashboard.hidden = true; loginPanel.hidden = false; $("#admin-password").value = ""; loginMessage.textContent = "";
-  });
+  const refreshMessages = $("#refresh-messages"); if (refreshMessages) refreshMessages.addEventListener("click", loadMessages);
+  $("#logout-button").addEventListener("click", async () => { try { await fetch("/api/admin/logout", { method: "POST", credentials: "same-origin" }); } catch (_) {} dashboard.hidden = true; loginPanel.hidden = false; $("#admin-password").value = ""; loginMessage.textContent = ""; });
   $("#admin-theme").addEventListener("click", () => applyTheme(document.documentElement.dataset.theme === "light" ? "dark" : "light"));
   $("#add-project").addEventListener("click", () => openProjectEditor(-1));
   $("#cancel-project").addEventListener("click", closeProjectEditor);

@@ -1,18 +1,17 @@
 # Youssef Ayash - Portfolio
 
-A responsive personal portfolio built with plain HTML, CSS, and vanilla JavaScript. No build step, no frameworks, no paid services.
+A responsive personal portfolio built with plain HTML, CSS, and vanilla JavaScript, plus an Express/PostgreSQL backend for securely storing contact messages and serving the admin inbox.
 
 ## Run it locally
 
-Option 1: double-click `index.html` to open it in your browser.
+This version needs Node.js 20+. If `DATABASE_URL` is configured, it uses PostgreSQL; otherwise local development automatically stores contact submissions in `data/messages.json`.
 
-Option 2 (recommended): start a tiny local server from this folder.
+1. Run `npm install` in this folder.
+2. For local development, no environment file is required: the admin password defaults to `YA`, a temporary session secret is generated automatically, and messages are saved in `data/messages.json`. For production, set a persistent `SESSION_SECRET` (32+ random characters), and set `DATABASE_URL` plus `ADMIN_PASSWORD` in your hosting environment.
+3. Run `npm start` and open http://localhost:3000.
+4. Open `/admin.html` to sign in. The server stores submissions in PostgreSQL.
 
-```
-python3 -m http.server 8000
-```
-
-Then open http://localhost:8000.
+Do not use Python's static file server for this version; it cannot process the form API.
 
 ## Project structure
 
@@ -21,7 +20,7 @@ index.html            Page structure (sections, dialogs, SEO tags)
 css/styles.css        All styling, theme variants, and responsive rules
 js/config.js          YOUR CONTENT: photo, links, skills, projects, gallery
 js/main.js            Behaviour (menu, project details, form, theme, animations)
-admin.html            Local portfolio dashboard (browser storage only)\njs/admin.js           Dashboard behaviour and project editor\ncss/admin.css         Dashboard styling\nassets/images/        Project previews and profile photos
+admin.html            Admin dashboard with server-backed contact inbox\njs/admin.js           Dashboard behaviour and project editor\ncss/admin.css         Dashboard styling\nassets/images/        Project previews and profile photos
 ```
 
 Almost everything you will want to change lives in `js/config.js`.
@@ -64,18 +63,21 @@ Edit the `skills` list in `js/config.js`. Add new skills only once they are real
 ### Page title, description, and sharing preview
 Edit the `<title>` and `<meta>` tags at the top of `index.html`. After you host the site, add an `og:image` tag (an absolute URL to a 1200x630 image) so links look good when shared.
 
-## Contact form
+## Contact form and admin inbox
 
-A static website cannot send email by itself, so the form works in one of two honest ways:
+The contact form sends to `POST /api/messages`; every valid submission appears in the admin dashboard under Messages. Locally, messages are saved in the ignored file `data/messages.json`. When `DATABASE_URL` is configured, they are saved in PostgreSQL table `portfolio_messages`. Sign in at `/admin.html` with password `YA` by default (or the `ADMIN_PASSWORD` value configured on the server) to view, reply by email, or delete submissions. Admin sessions use an HTTP-only cookie. Login and contact submissions are rate-limited.
 
-1. **Email app (default when `contact.email` is set):** the form validates, then opens the visitor's email app with the message pre-filled. Nothing is sent until they press send there.
-2. **Form service (optional):** create a free endpoint with a service such as Formspree or Web3Forms, then paste its URL into `contact.formEndpoint`. The form will then send the message directly and show a success or error message. Check that service's documentation for the exact request format it expects.
+Required environment variables:
+- `DATABASE_URL`: PostgreSQL connection string from your hosting provider.
+- `ADMIN_PASSWORD`: optional override for the default dashboard password `YA`. `YA` is intentionally simple per the requested setup; change it to a strong private password before exposing the admin dashboard publicly. Do not put it in frontend JavaScript or commit it to Git.
+- `SESSION_SECRET`: a random secret of at least 32 characters. Keep it private.
+- `NODE_ENV=production` in production hosting.
 
-If neither is set, the form tells the visitor it is not connected yet.
+The backend must be deployed on a Node.js host and the PostgreSQL database must be attached/configured. A static-only host such as GitHub Pages cannot run `server.js` by itself. Set the host start command to `npm start`. Never share your database URL or admin password publicly.
 
 ## Publishing
 
-Because it is static, you can host the folder for free on GitHub Pages, Netlify, or Cloudflare Pages by uploading the files as they are.
+This version includes an Express backend, so it must run on a Node.js host (not GitHub Pages alone). Set the start command to `npm start`. Configure a persistent `SESSION_SECRET`, a private `ADMIN_PASSWORD`, and a PostgreSQL `DATABASE_URL` on the host so visitor submissions are stored centrally and remain available across deployments.
 
 ## Notes
 
@@ -89,6 +91,4 @@ Use the Light mode / Dark mode control in the navigation. The preference is save
 
 ## Admin dashboard
 
-Open `admin.html`. The demo password is `change-this-password` and can be changed in `js/admin.js`. The dashboard can edit the project list and profile copy, and export/import a JSON backup.
-
-**Important limitation:** this project is a static front-end. The dashboard password check and saved changes are client-side only; they are not secure authentication, and edits are stored only in the current browser. They will not automatically update the site for other visitors or publish to GitHub. For a genuinely secure admin system and shared content, connect a server-side authentication flow and database, then move project/profile storage to that backend.
+Open `/admin.html` while the Node.js server is running. The default server-verified password is `YA`. Contact form submissions are stored server-side and displayed in the Messages tab. Project/profile editor changes remain browser-local in this version; they do not publish themselves to every visitor.

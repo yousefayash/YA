@@ -405,10 +405,9 @@
     const form = document.getElementById("contact-form");
     const status = document.getElementById("form-status");
     const submitButton = document.getElementById("contact-submit");
-    const endpoint = hasUrl(config.contact.formEndpoint) ? config.contact.formEndpoint.trim() : "";
+    const endpoint = "/api/messages";
     const email = hasUrl(config.contact.email) ? config.contact.email.trim() : "";
-
-    if (!endpoint && email) submitButton.textContent = "Send via Email App";
+    submitButton.textContent = "Send Message";
 
     const rules = {
       name: { test: (value) => value.length >= 2, message: "Please enter your name (at least 2 characters)." },
@@ -456,12 +455,15 @@
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(data)
         });
-        if (!response.ok) throw new Error("Request failed with status " + response.status);
+        if (!response.ok) {
+          const result = await response.json().catch(() => ({}));
+          throw new Error(result.error || "Request failed with status " + response.status);
+        }
         form.reset();
-        setStatus("success", "Thank you! Your message was sent.");
+        setStatus("success", "Your data was registered successfully and is now visible in the dashboard.");
       } catch (error) {
         console.error(error);
-        setStatus("error", "Sorry, the message could not be sent. Please try again later" + (email ? " or email " + email + " directly." : "."));
+        setStatus("error", "Sorry, your message could not be saved. Please try again later" + (email ? " or email " + email + " directly." : "."));
       } finally {
         submitButton.disabled = false;
       }
@@ -485,9 +487,7 @@
         message: form.elements.message.value.trim()
       };
 
-      if (endpoint) sendWithService(data);
-      else if (email) openEmailApp(data);
-      else setStatus("error", "This form isn't connected yet. Please check back soon or reach out through the links on this page.");
+      sendWithService(data);
     });
   }
 
