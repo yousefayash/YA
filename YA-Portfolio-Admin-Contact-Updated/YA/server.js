@@ -252,7 +252,7 @@ app.use((err, _req, res, _next) => {
         error: "Something went wrong. Please try again."
     });
 });
-initDb().then(() => app.listen(port, "8888", () => console.log(`Portfolio server listening on ${port}`))).catch((e) => {
+initDb().then(() => app.listen(port, "0.0.0.0", () => console.log(`Portfolio server listening on ${port}`))).catch((e) => {
     console.error("Startup failed:", e.message);
     process.exit(1);
 });
