@@ -7,7 +7,7 @@ A responsive personal portfolio built with plain HTML, CSS, and vanilla JavaScri
 This version needs Node.js 20+. If `DATABASE_URL` is configured, it uses PostgreSQL; otherwise local development automatically stores contact submissions in `data/messages.json`.
 
 1. Run `npm install` in this folder.
-2. For local development, no environment file is required: the admin password defaults to `YA`, a temporary session secret is generated automatically, and messages are saved in `data/messages.json`. For production, set a persistent `SESSION_SECRET` (32+ random characters), and set `DATABASE_URL` plus `ADMIN_PASSWORD` in your hosting environment.
+2. Local development uses `programing` as the dashboard password and generates a temporary session secret automatically. For production, set `ADMIN_PASSWORD` to a strong private password and `SESSION_SECRET` to a random string of at least 32 characters. Set `DATABASE_URL` to a PostgreSQL connection string for persistent messages and admin sessions.
 3. Run `npm start` and open http://localhost:3000.
 4. Open `/admin.html` to sign in. The server stores submissions in PostgreSQL.
 
@@ -20,7 +20,7 @@ index.html            Page structure (sections, dialogs, SEO tags)
 css/styles.css        All styling, theme variants, and responsive rules
 js/config.js          YOUR CONTENT: photo, links, skills, projects, gallery
 js/main.js            Behaviour (menu, project details, form, theme, animations)
-admin.html            Admin dashboard with server-backed contact inbox\njs/admin.js           Dashboard behaviour and project editor\ncss/admin.css         Dashboard styling\nassets/images/        Project previews and profile photos
+admin.html            Local portfolio dashboard (browser storage only)\njs/admin.js           Dashboard behaviour and project editor\ncss/admin.css         Dashboard styling\nassets/images/        Project previews and profile photos
 ```
 
 Almost everything you will want to change lives in `js/config.js`.
@@ -65,11 +65,11 @@ Edit the `<title>` and `<meta>` tags at the top of `index.html`. After you host 
 
 ## Contact form and admin inbox
 
-The contact form sends to `POST /api/messages`; every valid submission appears in the admin dashboard under Messages. Locally, messages are saved in the ignored file `data/messages.json`. When `DATABASE_URL` is configured, they are saved in PostgreSQL table `portfolio_messages`. Sign in at `/admin.html` with password `YA` by default (or the `ADMIN_PASSWORD` value configured on the server) to view, reply by email, or delete submissions. Admin sessions use an HTTP-only cookie. Login and contact submissions are rate-limited.
+The contact form sends to `POST /api/messages`; messages are saved in the PostgreSQL table `portfolio_messages`. Sign in at `/admin.html` using the `ADMIN_PASSWORD` environment variable to view, reply to by email, or delete submissions. Admin sessions are server-side, use an HTTP-only cookie, and are stored in PostgreSQL. Login and contact submissions are rate-limited.
 
 Required environment variables:
 - `DATABASE_URL`: PostgreSQL connection string from your hosting provider.
-- `ADMIN_PASSWORD`: optional override for the default dashboard password `YA`. `YA` is intentionally simple per the requested setup; change it to a strong private password before exposing the admin dashboard publicly. Do not put it in frontend JavaScript or commit it to Git.
+- `ADMIN_PASSWORD`: optional override for the default dashboard password `YA`. Use a strong private password in production; do not put it in frontend JavaScript or commit it to Git.
 - `SESSION_SECRET`: a random secret of at least 32 characters. Keep it private.
 - `NODE_ENV=production` in production hosting.
 
@@ -77,7 +77,7 @@ The backend must be deployed on a Node.js host and the PostgreSQL database must 
 
 ## Publishing
 
-This version includes an Express backend, so it must run on a Node.js host (not GitHub Pages alone). Set the start command to `npm start`. Configure a persistent `SESSION_SECRET`, a private `ADMIN_PASSWORD`, and a PostgreSQL `DATABASE_URL` on the host so visitor submissions are stored centrally and remain available across deployments.
+Deploy this project to a Node.js host using `npm install` and `npm start`. A PostgreSQL database should be attached for persistent messages and sessions. Static-only hosting (GitHub Pages, static Netlify, or static Cloudflare Pages) cannot run this Express backend.
 
 ## Notes
 
@@ -91,4 +91,6 @@ Use the Light mode / Dark mode control in the navigation. The preference is save
 
 ## Admin dashboard
 
-Open `/admin.html` while the Node.js server is running. The default server-verified password is `YA`. Contact form submissions are stored server-side and displayed in the Messages tab. Project/profile editor changes remain browser-local in this version; they do not publish themselves to every visitor.
+Open `admin.html`. The demo password is `change-this-password` and can be changed in `js/admin.js`. The dashboard can edit the project list and profile copy, and export/import a JSON backup.
+
+**Important limitation:** this project is a static front-end. The dashboard password check and saved changes are client-side only; they are not secure authentication, and edits are stored only in the current browser. They will not automatically update the site for other visitors or publish to GitHub. For a genuinely secure admin system and shared content, connect a server-side authentication flow and database, then move project/profile storage to that backend.

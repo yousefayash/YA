@@ -159,13 +159,24 @@
     } catch (error) { status.textContent = error.message || "Could not load messages."; }
   }
 
+  const passwordToggle = $("#toggle-admin-password");
+  if (passwordToggle) passwordToggle.addEventListener("click", () => {
+    const passwordInput = $("#admin-password");
+    const reveal = passwordInput.type === "password";
+    passwordInput.type = reveal ? "text" : "password";
+    passwordToggle.setAttribute("aria-pressed", String(reveal));
+    passwordToggle.setAttribute("aria-label", reveal ? "Hide password" : "Show password");
+    passwordToggle.title = reveal ? "Hide password" : "Show password";
+    passwordToggle.textContent = reveal ? "◎" : "◉";
+  });
+
   loginForm.addEventListener("submit", async (event) => {
     event.preventDefault(); const button = loginForm.querySelector("button[type='submit']"); button.disabled = true; loginMessage.textContent = "Signing in...";
     try {
       const response = await fetch("/api/admin/login", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ password: $("#admin-password").value }) });
       const result = await response.json().catch(() => ({})); if (!response.ok) throw new Error(result.error || "Sign-in failed.");
       loginPanel.hidden = true; dashboard.hidden = false; loadData(); renderProjects(); readSettingsForm(); updateStats(); goToTab("overview"); await loadMessages();
-    } catch (error) { loginMessage.textContent = error.message || "Could not sign in. Check the server configuration."; $("#admin-password").select(); }
+    } catch (error) { loginMessage.textContent = error instanceof TypeError ? "Can't connect to the server. Open this site through the deployed URL or run npm start, then try again." : (error.message || "Could not sign in. Check the server configuration."); $("#admin-password").select(); }
     finally { button.disabled = false; }
   });
   document.querySelectorAll("[data-tab]").forEach((button) => button.addEventListener("click", () => { goToTab(button.dataset.tab); if (button.dataset.tab === "messages") loadMessages(); }));

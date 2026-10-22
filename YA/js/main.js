@@ -463,7 +463,10 @@
         setStatus("success", "Your data was registered successfully and is now visible in the dashboard.");
       } catch (error) {
         console.error(error);
-        setStatus("error", "Sorry, your message could not be saved. Please try again later" + (email ? " or email " + email + " directly." : "."));
+        const networkFailure = error instanceof TypeError || /failed to fetch|networkerror|load failed/i.test(error.message || "");
+        setStatus("error", networkFailure
+          ? ("We couldn't connect to the contact service. Please try again in a moment" + (email ? " or email " + email + " directly." : "."))
+          : (error.message || "Your message could not be saved. Please try again later" + (email ? " or email " + email + " directly." : ".")));
       } finally {
         submitButton.disabled = false;
       }

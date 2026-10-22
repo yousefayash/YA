@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+cd /d E:\YA\YA<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
@@ -18,11 +18,13 @@
       <p class="muted">Sign in to manage your portfolio and view messages sent by visitors.</p>
       <form id="login-form">
         <label for="admin-password">Admin password</label>
-        <input id="admin-password" type="password" autocomplete="current-password" required>
+        <div class="password-field">
+          <input id="admin-password" type="password" autocomplete="current-password" required aria-describedby="login-message">
+          <button class="password-toggle" id="toggle-admin-password" type="button" aria-label="Show password" aria-pressed="false" title="Show password">◉</button>
+        </div>
         <button class="button button-primary" type="submit">Open dashboard <span aria-hidden="true">→</span></button>
         <p class="form-message" id="login-message" role="alert"></p>
       </form>
-      <p class="security-note">Admin access is verified by the server. Default password: <strong>YA</strong>. Set <code>ADMIN_PASSWORD</code> to change it.</p>
       <a class="back-link" href="index.html">← Back to portfolio</a>
     </section>
 
@@ -55,7 +57,7 @@
             <p class="muted" id="registration-status-text">When someone submits the contact form, their data will appear here and in Messages.</p>
           </div>
           <div class="content-card"><div class="card-heading"><div><p class="eyebrow">QUICK ACTIONS</p><h2>What would you like to do?</h2></div></div><div class="quick-grid"><button class="quick-action" data-go="projects"><span>↗</span><strong>Manage projects</strong><small>Edit descriptions, tech stack, and links</small></button><button class="quick-action" data-go="profile"><span>✎</span><strong>Update your story</strong><small>Keep your intro and journey in sync</small></button><button class="quick-action" data-go="data"><span>⇩</span><strong>Back up your data</strong><small>Export or restore portfolio settings</small></button></div></div>
-          <div class="notice"><strong>Heads up</strong><p>Contact form submissions are stored on the server and appear in Messages. Project and profile edits are saved in this browser only; they do not automatically publish to every visitor.</p></div>
+          <div class="notice"><strong>Heads up</strong><p>Because this is a static website, edits made here are stored in this browser only. To publish edits for every visitor, update the source files and push them to your hosting provider, or connect a secured backend/CMS.</p></div>
         </section>
 
         <section class="tab-panel" id="tab-projects" hidden>

@@ -1,6 +1,0 @@
-node_modules/
-.env
-.DS_Store
-
-# Visitor contact details are private local data
-data/messages.json
