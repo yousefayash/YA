@@ -397,7 +397,7 @@ button {
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, #ffffff 0%, #35a7ff 70%);
+  background: linear-gradient(120deg, #dada 0%, #35a7ff 70%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1003,43 +1003,6 @@ button {
   margin-top: auto;
 }
 
-/* 9. Gallery ------------------------------------------------------------- */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
-}
-
-.gallery-item {
-  position: relative;
-  display: block;
-  width: 100%;
-  padding: 0;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: #0d1118;
-  aspect-ratio: 4 / 5;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-3px);
-  border-color: rgba(53, 167, 255, 0.5);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 30%;
-  transition: transform 0.5s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.06);
-}
-
 /* 10. Contact ------------------------------------------------------------ */
 .contact-grid {
   display: grid;
@@ -1564,6 +1527,7 @@ a.contact-link:hover {
 
   .floating-chip {
     left: -8px;
+    text-align: center;
   }
 
   .about-grid {

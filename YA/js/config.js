@@ -120,11 +120,11 @@ window.PORTFOLIO_CONFIG = {
       ]
     },
     {
-      id: "ai-vision",
-      name: "AI Vision",
+      id: "Savoria",
+      name: "Savoria",
       summary: "A modern AI-themed web interface focused on presenting features and product information.",
-      image: "assets/images/projects/ai-vision-1.webp",
-      imageAlt: "Hero section of the AI Vision web interface",
+      image: "assets/images/projects/Savoria 1.png",
+      imageAlt: "Hero section of the Savoria web interface",
       technologies: ["HTML5", "CSS3", "JavaScript"],
       liveUrl: "",
       sourceUrl: "",
@@ -135,9 +135,9 @@ window.PORTFOLIO_CONFIG = {
         "Product information laid out for easy reading"
       ],
       screenshots: [
-        { src: "assets/images/projects/ai-vision-1.webp", alt: "AI Vision hero section with an animated orbit graphic" },
-        { src: "assets/images/projects/ai-vision-2.webp", alt: "AI Vision features section with four capability cards" },
-        { src: "assets/images/projects/ai-vision-3.webp", alt: "AI Vision contact section with a message form" }
+        { src: "assets/images/projects/Savoria 1.png", alt: "Savoria hero section with an animated orbit graphic" },
+        { src: "assets/images/projects/Savoria 2.png", alt: "Savoria features section with four capability cards" },
+        { src: "assets/images/projects/Savoria 4.png", alt: "Savoria contact section with a message form" }
       ],
       learnings: [
         "Building a consistent, modern visual theme",
@@ -171,31 +171,31 @@ window.PORTFOLIO_CONFIG = {
     }
     ,
     {
-      id: "dark-code",
-      name: "Dark Code",
+      id: "Domes",
+      name: "Domes",
       summary: "A dark, developer-focused multi-page website concept with a clear service presentation and blue accent details.",
-      image: "assets/images/projects/dark-code.svg",
-      imageAlt: "Dark Code website concept cover",
+      image: "assets/images/projects/Domes.png",
+      imageAlt: "Domes website concept cover",
       technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
       liveUrl: "",
       sourceUrl: "",
       overview: "A multi-page website concept built around a developer community identity. The focus is on clear navigation, a consistent visual system, and layouts that stay useful on smaller screens.",
       features: ["Multi-page navigation structure", "Dark interface with blue accents", "Reusable cards and buttons", "Responsive layout patterns"],
-      screenshots: [{ src: "assets/images/projects/dark-code.svg", alt: "Dark Code concept cover" }],
-      learnings: ["Keeping visual styles consistent across pages", "Planning reusable components in plain HTML and CSS"]
+      screenshots: [{ src: "assets/images/projects/Domes 2.png", alt: "Domes concept cover" }],
+      learnings: ["Keeping visual styles consistent across pages", "Planning reusable components in plain HTML and CSS and JS and UI Design"]
     },
     {
-      id: "nova-academy",
-      name: "Nova Academy",
-      summary: "An education landing page concept for presenting courses, learning paths, and student-focused information.",
-      image: "assets/images/projects/nova-academy.svg",
-      imageAlt: "Nova Academy website concept cover",
+      id: "AMBRE Obscur.",
+      name: "AMBRE Obscur.",
+      summary: "An education Website concept for presenting courses, learning paths, and student-focused information.",
+      image: "assets/images/projects/Ampre 1.png",
+      imageAlt: "AMBRE Obscur. website concept cover",
       technologies: ["HTML5", "CSS3", "JavaScript", "UI Design"],
       liveUrl: "",
       sourceUrl: "",
       overview: "A course and academy website concept that organizes learning information into an easy-to-scan page. The interface aims to make course discovery straightforward without overwhelming visitors.",
-      features: ["Course-focused landing page", "Clear information hierarchy", "Responsive card layout", "Simple calls to action"],
-      screenshots: [{ src: "assets/images/projects/nova-academy.svg", alt: "Nova Academy concept cover" }],
+      features: ["Course-focused Website", "Clear information hierarchy", "Responsive card layout", "Simple calls to action"],
+      screenshots: [{ src: "assets/images/projects/Ampre 2.png", alt: "Nova Academy concept cover" }],
       learnings: ["Designing around a clear user goal", "Balancing content density with readable layouts"]
     }
   ],
