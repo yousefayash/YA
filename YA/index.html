@@ -1,300 +1,324 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Youssef Ayash | Front-End Developer</title>
-  <meta name="description" content="Portfolio of Youssef Ayash, a Front-End Developer building responsive, modern web experiences with clean code, thoughtful design, and attention to detail.">
-  <meta name="author" content="Youssef Ayash">
-  <meta name="theme-color" content="#07090D">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Youssef Ayash | Front-End Developer</title>
+    <meta name="description" content="Portfolio of Youssef Ayash, a Front-End Developer building responsive, modern web experiences with clean code, thoughtful design, and attention to detail.">
+    <meta name="author" content="Youssef Ayash">
+    <meta name="theme-color" content="#07090D">
 
-  <!-- Open Graph. Add an og:image (absolute URL, 1200x630 PNG/JPG) once the site is hosted. -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Youssef Ayash | Front-End Developer">
-  <meta property="og:description" content="Responsive, modern web experiences with clean code, thoughtful design, and attention to detail.">
-  <meta name="twitter:card" content="summary">
+    <!-- Open Graph. Add an og:image (absolute URL, 1200x630 PNG/JPG) once the site is hosted. -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Youssef Ayash | Front-End Developer">
+    <meta property="og:description" content="Responsive, modern web experiences with clean code, thoughtful design, and attention to detail.">
+    <meta name="twitter:card" content="summary">
 
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="css/styles.css">
-  <script>document.documentElement.classList.add("js");</script>
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+    <script>
+        document.documentElement.classList.add("js");
+    </script>
 </head>
+
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header" id="site-header">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="logo" href="#home" aria-label="Youssef Ayash, back to top">YA<span class="logo-dot">.</span></a>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" id="site-header">
+        <nav class="nav container" aria-label="Main navigation">
+            <a class="logo" href="#home" aria-label="Youssef Ayash, back to top">YA<span class="logo-dot">.</span></a>
 
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home" data-nav="home">Home</a></li>
-        <li><a href="#about" data-nav="about">About Me</a></li>
-        <li><a href="#skills" data-nav="skills">Skills</a></li>
-        <li><a href="#projects" data-nav="projects">Projects</a></li>
-        <li><a href="#journey" data-nav="journey">My Journey</a></li>
-        <li><a href="#contact" data-nav="contact">Contact</a></li>
-        <li class="nav-cta-mobile"><a class="btn btn-primary" href="#contact">Let's Talk</a></li>
-      </ul>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" data-nav="home">Home</a></li>
+                <li><a href="#about" data-nav="about">About Me</a></li>
+                <li><a href="#skills" data-nav="skills">Skills</a></li>
+                <li><a href="#projects" data-nav="projects">Projects</a></li>
+                <li><a href="#journey" data-nav="journey">My Journey</a></li>
+                <li><a href="#contact" data-nav="contact">Contact</a></li>
+                <li class="nav-cta-mobile"><a class="btn btn-primary" href="#contact">Let's Talk</a></li>
+            </ul>
 
-      <a class="btn btn-primary nav-cta" href="#contact">Let's Talk</a>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle theme"><span aria-hidden="true">☼</span><span class="theme-toggle-label">Light mode</span></button>
+            <a class="btn btn-primary nav-cta" href="#contact">Let's Talk</a>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle theme"><span aria-hidden="true">☼</span><span class="theme-toggle-label">Light mode</span></button>
 
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
-        <span class="menu-bar"></span>
-      </button>
-    </nav>
-  </header>
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+        </nav>
+    </header>
 
-  <main id="main">
-    <!-- HERO -->
-    <section class="hero" id="home" aria-labelledby="hero-title">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="hero-glow hero-glow-one"></div>
-        <div class="hero-glow hero-glow-two"></div>
-        <div class="hero-grid"></div>
-      </div>
-
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="availability" id="availability" hidden>
-            <span class="availability-dot" id="availability-dot"></span>
-            <span id="availability-text"></span>
-          </p>
-          <h1 class="hero-title" id="hero-title">Hi, I'm <span class="text-gradient" data-owner-name>Youssef Ayash.</span></h1>
-          <p class="hero-role">Front-End Developer</p>
-          <p class="hero-lead">I build responsive, modern web experiences with clean code, thoughtful design, and attention to detail.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">Explore My Work</a>
-            <a class="btn btn-ghost" href="#contact">Contact Me</a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="photo-frame">
-            <img class="js-profile-image" src="assets/images/photos/photo-1.jpg" alt="Profile photo of Youssef Ayash" width="480" height="560">
-          </div>
-          <div class="floating-chip" aria-hidden="true">
-            <span>HTML</span><span>CSS</span><span>JS</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="section section-alt" id="about" aria-labelledby="about-title">
-      <div class="container about-grid">
-        <div class="about-image reveal">
-          <div class="photo-frame photo-frame-small">
-            <img class="js-profile-image" src="assets/images/photos/photo-2.jpg" alt="Profile photo of Youssef Ayash" width="480" height="560" loading="lazy">
-          </div>
-        </div>
-
-        <div class="about-content reveal">
-          <p class="eyebrow">About Me</p>
-          <h2 class="section-title" id="about-title">Building practical websites, one detail at a time</h2>
-          <p>I'm a developing Front-End Developer who enjoys building practical websites, improving user experiences, and continuously learning new technologies.</p>
-          <p>I like turning ideas into pages that feel clear and work well on every screen, and I keep growing by building real projects.</p>
-
-          <ul class="focus-list">
-            <li class="focus-item">
-              <h3>Responsive web design</h3>
-              <p>Layouts that adapt smoothly from phones to large screens.</p>
-            </li>
-            <li class="focus-item">
-              <h3>Interactive user interfaces</h3>
-              <p>Interfaces that respond to people and feel intuitive.</p>
-            </li>
-            <li class="focus-item">
-              <h3>Clean, maintainable code</h3>
-              <p>Readable structure that is easy to update later.</p>
-            </li>
-            <li class="focus-item">
-              <h3>Continuous learning</h3>
-              <p>Always improving by practicing and exploring new tools.</p>
-            </li>
-          </ul>
-
-          <a class="btn btn-primary" href="#projects">View My Projects</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills" aria-labelledby="skills-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Skills</p>
-          <h2 class="section-title" id="skills-title">What I work with</h2>
-          <p class="section-intro">The technologies and concepts I use to build for the web today.</p>
-        </header>
-        <div class="skills-grid" id="skills-grid"></div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section section-alt" id="projects" aria-labelledby="projects-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Featured Projects</p>
-          <h2 class="section-title" id="projects-title">Things I've built</h2>
-          <p class="section-intro">Select a project to see its overview, features, and what I learned.</p>
-        </header>
-        <div class="projects-grid" id="projects-grid"></div>
-      </div>
-    </section>
-
-    <!-- MY JOURNEY -->
-    <section class="journey-section" id="journey" aria-labelledby="journey-title">
-      <div class="journey-container">
-        <header class="journey-heading reveal">
-          <span class="journey-label">THE STORY SO FAR</span>
-          <h2 id="journey-title">My <span>Journey</span></h2>
-          <h3>Four years of learning, building, and getting better.</h3>
-          <p>
-            I'm Youssef Ayash, a front-end developer who enjoys turning ideas into useful,
-            polished web experiences. Over the last four years, I've grown from learning the
-            basics of the web to building multi-page projects, working with APIs, and exploring
-            how the front end connects to real data. I'm still learning, and every project gives
-            me a new problem to solve.
-          </p>
-          <div class="journey-highlights" aria-label="Journey highlights">
-            <div class="journey-highlight"><strong>04+</strong><span>Years learning & building</span></div>
-            <div class="journey-highlight"><strong>HTML · CSS · JS</strong><span>Core toolkit</span></div>
-            <div class="journey-highlight"><strong>6</strong><span>Featured projects</span></div>
-          </div>
-        </header>
-        <div class="journey-timeline">
-          <div class="journey-line" aria-hidden="true"></div>
-          <article class="journey-item">
-            <div class="journey-card journey-left reveal">
-              <span class="journey-number">01 / THE START</span><h3>Curiosity became a skill</h3>
-              <h4>Understanding how websites work</h4>
-              <p>I started by exploring websites and learning how structure, styling, and browser behaviour come together. The goal was simple: stop only looking at websites and start building them.</p>
-              <div class="journey-tags"><span>HTML</span><span>Web basics</span><span>Practice</span></div>
-            </div><div class="journey-marker" aria-hidden="true">01</div><div class="journey-empty"></div>
-          </article>
-          <article class="journey-item">
-            <div class="journey-empty"></div><div class="journey-marker" aria-hidden="true">02</div>
-            <div class="journey-card journey-right reveal">
-              <span class="journey-number">02 / THE FOUNDATIONS</span><h3>Making ideas look right</h3>
-              <h4>HTML5, CSS3 & responsive design</h4>
-              <p>I learned to build page layouts, use spacing and typography intentionally, and adapt interfaces to mobile, tablet, and desktop instead of designing for one screen only.</p>
-              <div class="journey-tags"><span>HTML5</span><span>CSS3</span><span>Responsive UI</span></div>
+    <main id="main">
+        <!-- HERO -->
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-glow hero-glow-one"></div>
+                <div class="hero-glow hero-glow-two"></div>
+                <div class="hero-grid"></div>
             </div>
-          </article>
-          <article class="journey-item">
-            <div class="journey-card journey-left reveal">
-              <span class="journey-number">03 / INTERACTION</span><h3>Bringing pages to life</h3>
-              <h4>JavaScript, DOM & async code</h4>
-              <p>I moved beyond static pages with events, DOM manipulation, form validation, Fetch, and async/await. I learned to think about what happens when a person actually uses an interface.</p>
-              <div class="journey-tags"><span>JavaScript</span><span>DOM & Events</span><span>Fetch API</span></div>
-            </div><div class="journey-marker" aria-hidden="true">03</div><div class="journey-empty"></div>
-          </article>
-          <article class="journey-item">
-            <div class="journey-empty"></div><div class="journey-marker" aria-hidden="true">04</div>
-            <div class="journey-card journey-right reveal">
-              <span class="journey-number">04 / REAL PROJECTS</span><h3>Learning by shipping</h3>
-              <h4>Projects, Git, APIs & data</h4>
-              <p>I applied what I learned to projects like a school website, an e-commerce experience, and product-style landing pages. I also explored Git/GitHub and the basics of connecting interfaces to backend services and databases.</p>
-              <div class="journey-tags"><span>Git & GitHub</span><span>APIs</span><span>PostgreSQL basics</span></div>
+
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <p class="availability" id="availability" hidden>
+                        <span class="availability-dot" id="availability-dot"></span>
+                        <span id="availability-text"></span>
+                    </p>
+                    <h1 class="hero-title" id="hero-title">Hi, I'm <span class="text-gradient" data-owner-name>Youssef Ayash.</span></h1>
+                    <p class="hero-role">Front-End Developer</p>
+                    <p class="hero-lead">I build responsive, modern web experiences with clean code, thoughtful design, and attention to detail.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#projects">Explore My Work</a>
+                        <a class="btn btn-ghost" href="#contact">Contact Me</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="photo-frame">
+                        <img class="js-profile-image" src="assets/images/photos/photo-1.jpg" alt="Profile photo of Youssef Ayash" width="480" height="560">
+                    </div>
+                    <div class="floating-chip" aria-hidden="true">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                </div>
             </div>
-          </article>
-          <article class="journey-item">
-            <div class="journey-card journey-left reveal">
-              <span class="journey-number">05 / RIGHT NOW</span><h3>Building with intention</h3>
-              <h4>Cleaner code, stronger fundamentals</h4>
-              <p>Today I'm focused on making my work more consistent: clearer code, accessible interactions, useful details, and reliable responsive layouts. My next step is to strengthen JavaScript and continue progressing toward professional front-end development.</p>
-              <div class="journey-tags"><span>Clean code</span><span>Accessibility</span><span>Continuous learning</span></div>
-            </div><div class="journey-marker" aria-hidden="true">05</div><div class="journey-empty"></div>
-          </article>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section section-alt" id="about" aria-labelledby="about-title">
+            <div class="container about-grid">
+                <div class="about-image reveal">
+                    <div class="photo-frame photo-frame-small">
+                        <img class="js-profile-image" src="assets/images/photos/photo-2.jpg" alt="Profile photo of Youssef Ayash" width="480" height="560" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="about-content reveal">
+                    <p class="eyebrow">About Me</p>
+                    <h2 class="section-title" id="about-title">Building practical websites, one detail at a time</h2>
+                    <p>I'm a developing Front-End Developer who enjoys building practical websites, improving user experiences, and continuously learning new technologies.</p>
+                    <p>I like turning ideas into pages that feel clear and work well on every screen, and I keep growing by building real projects.</p>
+
+                    <ul class="focus-list">
+                        <li class="focus-item">
+                            <h3>Responsive web design</h3>
+                            <p>Layouts that adapt smoothly from phones to large screens.</p>
+                        </li>
+                        <li class="focus-item">
+                            <h3>Interactive user interfaces</h3>
+                            <p>Interfaces that respond to people and feel intuitive.</p>
+                        </li>
+                        <li class="focus-item">
+                            <h3>Clean, maintainable code</h3>
+                            <p>Readable structure that is easy to update later.</p>
+                        </li>
+                        <li class="focus-item">
+                            <h3>Continuous learning</h3>
+                            <p>Always improving by practicing and exploring new tools.</p>
+                        </li>
+                    </ul>
+
+                    <a class="btn btn-primary" href="#projects">View My Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section" id="skills" aria-labelledby="skills-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow">Skills</p>
+                    <h2 class="section-title" id="skills-title">What I work with</h2>
+                    <p class="section-intro">The technologies and concepts I use to build for the web today.</p>
+                </header>
+                <div class="skills-grid" id="skills-grid"></div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section section-alt" id="projects" aria-labelledby="projects-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow">Featured Projects</p>
+                    <h2 class="section-title" id="projects-title">Things I've built</h2>
+                    <p class="section-intro">Select a project to see its overview, features, and what I learned.</p>
+                </header>
+                <div class="projects-grid" id="projects-grid"></div>
+            </div>
+        </section>
+
+        <!-- MY JOURNEY -->
+        <section class="journey-section" id="journey" aria-labelledby="journey-title">
+            <div class="journey-container">
+                <header class="journey-heading reveal">
+                    <span class="journey-label">THE STORY SO FAR</span>
+                    <h2 id="journey-title">My <span>Journey</span></h2>
+                    <h3>Four years of learning, building, and getting better.</h3>
+                    <p>
+                        I'm Youssef Ayash, a front-end developer who enjoys turning ideas into useful,
+                        polished web experiences. Over the last four years, I've grown from learning the
+                        basics of the web to building multi-page projects, working with APIs, and exploring
+                        how the front end connects to real data. I'm still learning, and every project gives
+                        me a new problem to solve.
+                    </p>
+                    <div class="journey-highlights" aria-label="Journey highlights">
+                        <div class="journey-highlight"><strong>04+</strong><span>Years learning & building</span></div>
+                        <div class="journey-highlight"><strong>HTML · CSS · JS</strong><span>Core toolkit</span></div>
+                        <div class="journey-highlight"><strong>6</strong><span>Featured projects</span></div>
+                    </div>
+                </header>
+                <div class="journey-timeline">
+                    <div class="journey-line" aria-hidden="true"></div>
+                    <article class="journey-item">
+                        <div class="journey-card journey-left reveal">
+                            <span class="journey-number">01 / THE START</span>
+                            <h3>Curiosity became a skill</h3>
+                            <h4>Understanding how websites work</h4>
+                            <p>I started by exploring websites and learning how structure, styling, and browser behaviour come together. The goal was simple: stop only looking at websites and start building them.</p>
+                            <div class="journey-tags"><span>HTML</span><span>Web basics</span><span>Practice</span></div>
+                        </div>
+                        <div class="journey-marker" aria-hidden="true">01</div>
+                        <div class="journey-empty"></div>
+                    </article>
+                    <article class="journey-item">
+                        <div class="journey-empty"></div>
+                        <div class="journey-marker" aria-hidden="true">02</div>
+                        <div class="journey-card journey-right reveal">
+                            <span class="journey-number">02 / THE FOUNDATIONS</span>
+                            <h3>Making ideas look right</h3>
+                            <h4>HTML5, CSS3 & responsive design</h4>
+                            <p>I learned to build page layouts, use spacing and typography intentionally, and adapt interfaces to mobile, tablet, and desktop instead of designing for one screen only.</p>
+                            <div class="journey-tags"><span>HTML5</span><span>CSS3</span><span>Responsive UI</span></div>
+                        </div>
+                    </article>
+                    <article class="journey-item">
+                        <div class="journey-card journey-left reveal">
+                            <span class="journey-number">03 / INTERACTION</span>
+                            <h3>Bringing pages to life</h3>
+                            <h4>JavaScript, DOM & async code</h4>
+                            <p>I moved beyond static pages with events, DOM manipulation, form validation, Fetch, and async/await. I learned to think about what happens when a person actually uses an interface.</p>
+                            <div class="journey-tags"><span>JavaScript</span><span>DOM & Events</span><span>Fetch API</span></div>
+                        </div>
+                        <div class="journey-marker" aria-hidden="true">03</div>
+                        <div class="journey-empty"></div>
+                    </article>
+                    <article class="journey-item">
+                        <div class="journey-empty"></div>
+                        <div class="journey-marker" aria-hidden="true">04</div>
+                        <div class="journey-card journey-right reveal">
+                            <span class="journey-number">04 / REAL PROJECTS</span>
+                            <h3>Learning by shipping</h3>
+                            <h4>Projects, Git, APIs & data</h4>
+                            <p>I applied what I learned to projects like a school website, an e-commerce experience, and product-style landing pages. I also explored Git/GitHub and the basics of connecting interfaces to backend services and databases.</p>
+                            <div class="journey-tags"><span>Git & GitHub</span><span>APIs</span><span>PostgreSQL basics</span></div>
+                        </div>
+                    </article>
+                    <article class="journey-item">
+                        <div class="journey-card journey-left reveal">
+                            <span class="journey-number">05 / RIGHT NOW</span>
+                            <h3>Building with intention</h3>
+                            <h4>Cleaner code, stronger fundamentals</h4>
+                            <p>Today I'm focused on making my work more consistent: clearer code, accessible interactions, useful details, and reliable responsive layouts. My next step is to strengthen JavaScript and continue progressing toward professional front-end development.</p>
+                            <div class="journey-tags"><span>Clean code</span><span>Accessibility</span><span>Continuous learning</span></div>
+                        </div>
+                        <div class="journey-marker" aria-hidden="true">05</div>
+                        <div class="journey-empty"></div>
+                    </article>
+                </div>
+                <div class="journey-footer reveal"><span class="journey-footer-dot"></span>
+                    <p>Four years in, and still curious about what I can build next.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section section-alt" id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow">Contact</p>
+                    <h2 class="section-title" id="contact-title">Let's talk</h2>
+                    <p class="section-intro">Have a project, an opportunity, or just a question? Send a message or reach out on any of these.</p>
+                </header>
+
+                <div class="contact-grid">
+                    <ul class="contact-links reveal" id="contact-links"></ul>
+
+                    <form class="contact-form reveal" id="contact-form" novalidate>
+                        <div class="field">
+                            <label for="contact-name">Name</label>
+                            <input id="contact-name" name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error">
+                            <p class="field-error" id="contact-name-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="contact-email">Email</label>
+                            <input id="contact-email" name="email" type="email" autocomplete="email" required aria-describedby="contact-email-error">
+                            <p class="field-error" id="contact-email-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="contact-subject">Subject</label>
+                            <input id="contact-subject" name="subject" type="text" required aria-describedby="contact-subject-error">
+                            <p class="field-error" id="contact-subject-error" role="alert"></p>
+                        </div>
+                        <div class="field">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" rows="5" required aria-describedby="contact-message-error"></textarea>
+                            <p class="field-error" id="contact-message-error" role="alert"></p>
+                        </div>
+                        <button class="btn btn-primary" type="submit" id="contact-submit">Send Message</button>
+                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a class="logo" href="#home" aria-label="Back to top">YA<span class="logo-dot">.</span></a>
+                <p>Front-end developer focused on responsive interfaces, thoughtful details, and continuous learning.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="#home">Home</a>
+                <a href="#about">About Me</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#journey">My Journey</a>
+                <a href="#contact">Contact</a>
+                <a href="admin.html">Admin</a>
+            </nav>
+
+            <ul class="footer-socials" id="footer-socials" aria-label="Social links"></ul>
         </div>
-        <div class="journey-footer reveal"><span class="journey-footer-dot"></span><p>Four years in, and still curious about what I can build next.</p></div>
-      </div>
-    </section>
+        <p class="copyright container">&copy; <span id="current-year">2026</span> Youssef Ayash. All rights reserved.</p>
+    </footer>
 
-    <!-- CONTACT -->
-    <section class="section section-alt" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow">Contact</p>
-          <h2 class="section-title" id="contact-title">Let's talk</h2>
-          <p class="section-intro">Have a project, an opportunity, or just a question? Send a message or reach out on any of these.</p>
-        </header>
-
-        <div class="contact-grid">
-          <ul class="contact-links reveal" id="contact-links"></ul>
-
-          <form class="contact-form reveal" id="contact-form" novalidate>
-            <div class="field">
-              <label for="contact-name">Name</label>
-              <input id="contact-name" name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error">
-              <p class="field-error" id="contact-name-error" role="alert"></p>
-            </div>
-            <div class="field">
-              <label for="contact-email">Email</label>
-              <input id="contact-email" name="email" type="email" autocomplete="email" required aria-describedby="contact-email-error">
-              <p class="field-error" id="contact-email-error" role="alert"></p>
-            </div>
-            <div class="field">
-              <label for="contact-subject">Subject</label>
-              <input id="contact-subject" name="subject" type="text" required aria-describedby="contact-subject-error">
-              <p class="field-error" id="contact-subject-error" role="alert"></p>
-            </div>
-            <div class="field">
-              <label for="contact-message">Message</label>
-              <textarea id="contact-message" name="message" rows="5" required aria-describedby="contact-message-error"></textarea>
-              <p class="field-error" id="contact-message-error" role="alert"></p>
-            </div>
-            <button class="btn btn-primary" type="submit" id="contact-submit">Send Message</button>
-            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a class="logo" href="#home" aria-label="Back to top">YA<span class="logo-dot">.</span></a>
-        <p>Front-end developer focused on responsive interfaces, thoughtful details, and continuous learning.</p>
-      </div>
-
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="#home">Home</a>
-        <a href="#about">About Me</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#journey">My Journey</a>
-        <a href="#contact">Contact</a>
-        <a href="admin.html">Admin</a>
-      </nav>
-
-      <ul class="footer-socials" id="footer-socials" aria-label="Social links"></ul>
-    </div>
-    <p class="copyright container">&copy; <span id="current-year">2026</span> Youssef Ayash. All rights reserved.</p>
-  </footer>
-
-  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" hidden>
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-  </button>
-
-  <!-- Project details -->
-  <dialog class="dialog project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
-    <button class="dialog-close" type="button" id="project-dialog-close" aria-label="Close project details">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top" hidden>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
     </button>
-    <div class="project-dialog-body" id="project-dialog-body"></div>
-  </dialog>
 
-  <noscript>
-    <p class="noscript-note">This portfolio uses JavaScript to show projects and skills. Please enable JavaScript to see everything.</p>
-  </noscript>
+    <!-- Project details -->
+    <dialog class="dialog project-dialog" id="project-dialog" aria-labelledby="project-dialog-title">
+        <button class="dialog-close" type="button" id="project-dialog-close" aria-label="Close project details">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+        </button>
+        <div class="project-dialog-body" id="project-dialog-body"></div>
+    </dialog>
 
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+    <noscript>
+        <p class="noscript-note">This portfolio uses JavaScript to show projects and skills. Please enable JavaScript to see everything.</p>
+    </noscript>
+
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
