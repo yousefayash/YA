@@ -174,7 +174,7 @@ window.PORTFOLIO_CONFIG = {
       id: "Domes",
       name: "Domes",
       summary: "A dark, developer-focused multi-page website concept with a clear service presentation and blue accent details.",
-      image: "assets/images/projects/Domes.png",
+      image: "assets/images/projects/DOMES.png",
       imageAlt: "Domes website concept cover",
       technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
       liveUrl: "",
