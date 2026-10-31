@@ -95,7 +95,7 @@ window.PORTFOLIO_CONFIG = {
     {
       id: "urban-cart",
       name: "Urban Cart",
-      summary: "An e-commerce project featuring product browsing, categories, cart functionality, and checkout-related interfaces.",
+      summary: "A responsive e-commerce website built with HTML, CSS, and JavaScript, featuring product browsing, category navigation, wishlist, shopping cart, and checkout interfaces.",
       image: "assets/images/projects/urban-cart-1.webp",
       imageAlt: "Home page of the Urban Cart e-commerce project",
       technologies: ["HTML5", "CSS3", "JavaScript"],
