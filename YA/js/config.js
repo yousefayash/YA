@@ -94,7 +94,7 @@ window.PORTFOLIO_CONFIG = {
     {
       id: "urban-cart",
       name: "Urban Cart",
-      summary: "A responsive e-commerce website built with HTML, CSS, and JavaScript, featuring product browsing, category navigation, wishlist, shopping cart, and checkout interfaces.",
+      summary: "A responsive e-commerce website built with HTML5, CSS3, and JavaScript, featuring product browsing, categories, wishlist, shopping cart, and checkout interfaces.",
       image: "assets/images/projects/urban-cart-1.webp",
       imageAlt: "Home page of the Urban Cart e-commerce project",
       technologies: ["HTML5", "CSS3", "JavaScript"],
@@ -121,13 +121,13 @@ window.PORTFOLIO_CONFIG = {
     {
       id: "Savoria",
       name: "Savoria",
-      summary: "A modern AI-themed web interface focused on presenting features and product information.",
+      summary: "A modern AI-themed website interface built with HTML, CSS, and JavaScript, featuring product information, interactive sections, and a modern visual design.",
       image: "assets/images/projects/Savoria 1.png",
       imageAlt: "Hero section of the Savoria web interface",
       technologies: ["HTML5", "CSS3", "JavaScript"],
       liveUrl: "",
       sourceUrl: "",
-      overview: "A modern, AI-themed web interface built to present a product's features and information in a clear and engaging way.",
+      overview: "Savoria is an AI-themed web interface focused on presenting product features and information through a clean layout, interactive sections, and a consistent modern visual identity.",
       features: [
         "Modern AI-inspired visual theme",
         "Clear presentation of features",
@@ -146,13 +146,13 @@ window.PORTFOLIO_CONFIG = {
     {
       id: "greenbasket-hypermarket",
       name: "GreenBasket Hypermarket",
-      summary: "A modern hypermarket website with a clean layout and a green visual identity.",
+      summary: "A responsive hypermarket website built with HTML5, CSS3, and JavaScript, featuring a clean layout and a consistent green visual identity.",
       image: "assets/images/projects/greenbasket-1.webp",
       imageAlt: "Home page of the GreenBasket Hypermarket website",
       technologies: ["HTML5", "CSS3", "JavaScript"],
       liveUrl: "",
       sourceUrl: "",
-      overview: "A modern website for a hypermarket, designed around a clean layout and a fresh green visual identity.",
+     overview: "GreenBasket Hypermarket is a modern website concept designed to present a retail brand through responsive pages, organized content, and a fresh green visual identity.",
       features: [
         "Clean, easy-to-read layout",
         "Green visual identity",
@@ -172,13 +172,13 @@ window.PORTFOLIO_CONFIG = {
     {
       id: "Domes",
       name: "Domes",
-      summary: "A dark, developer-focused multi-page website concept with a clear service presentation and blue accent details.",
+      summary: "A dark, developer-focused multi-page website concept built with HTML5, CSS3, and JavaScript, featuring responsive layouts and blue accent details.",
       image: "assets/images/projects/DOMES.png",
       imageAlt: "Domes website concept cover",
       technologies: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
       liveUrl: "",
       sourceUrl: "",
-      overview: "A multi-page website concept built around a developer community identity. The focus is on clear navigation, a consistent visual system, and layouts that stay useful on smaller screens.",
+      overview: "Domes is a multi-page website concept with a developer-focused identity. It uses a dark visual theme, blue accents, clear navigation, and reusable interface patterns designed for different screen sizes.",
       features: ["Multi-page navigation structure", "Dark interface with blue accents", "Reusable cards and buttons", "Responsive layout patterns"],
       screenshots: [{ src: "assets/images/projects/Domes 2.png", alt: "Domes concept cover" }],
       learnings: ["Keeping visual styles consistent across pages", "Planning reusable components in plain HTML and CSS and JS and UI Design"]
@@ -186,13 +186,13 @@ window.PORTFOLIO_CONFIG = {
     {
       id: "AMBRE Obscur.",
       name: "AMBRE Obscur.",
-      summary: "An education Website concept for presenting courses, learning paths, and student-focused information.",
+      summary: "A responsive education website concept built with HTML5, CSS3, and JavaScript, designed to present courses, learning paths, and student information.",
       image: "assets/images/projects/Ampre 1.png",
       imageAlt: "AMBRE Obscur. website concept cover",
       technologies: ["HTML5", "CSS3", "JavaScript", "UI Design"],
       liveUrl: "",
       sourceUrl: "",
-      overview: "A course and academy website concept that organizes learning information into an easy-to-scan page. The interface aims to make course discovery straightforward without overwhelming visitors.",
+      overview: "AMBRE Obscur. is an educational website concept that organizes course information and learning paths into a clear interface. Its design focuses on readable content, responsive layouts, and straightforward navigation.",
       features: ["Course-focused Website", "Clear information hierarchy", "Responsive card layout", "Simple calls to action"],
       screenshots: [{ src: "assets/images/projects/Ampre 2.png", alt: "Nova Academy concept cover" }],
       learnings: ["Designing around a clear user goal", "Balancing content density with readable layouts"]
