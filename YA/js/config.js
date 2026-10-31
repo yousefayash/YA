@@ -1,10 +1,9 @@
 window.PORTFOLIO_CONFIG = {
   owner: {
     name: "Youssef Ayash",
-    // Replace with your own photo, e.g. "assets/images/profile.jpg"
     profileImage: "assets/images/photos/photo-1.jpg",
-    profileAlt: "Profile photo of Youssef Ayash"
-  },
+    profileAlt: "Youssef Ayash (يوسف عياش), Front-End Developer from Egypt"
+},
 
   // Small status pill in the hero. Set show to false to hide it.
   // state: "neutral" (blue) | "available" (green) | "busy" (amber)
@@ -34,31 +33,31 @@ window.PORTFOLIO_CONFIG = {
 
   skills: [
     {
-      category: "Core Web",
-      description: "The foundations of everything I build.",
-      items: ["HTML5", "CSS3", "JavaScript"]
+        category: "Core Web Development",
+        description: "Front-end development fundamentals.",
+        items: ["HTML5", "CSS3", "JavaScript"]
     },
     {
-      category: "Design & Layout",
-      description: "Making interfaces work on every screen.",
-      items: ["Responsive Web Design"]
+        category: "Responsive Web Design",
+        description: "Building websites for mobile, tablet, and desktop.",
+        items: ["Responsive Web Design", "CSS Layouts"]
     },
     {
-      category: "Interactivity",
-      description: "Bringing pages to life in the browser.",
-      items: ["DOM Manipulation", "JavaScript Events"]
+        category: "JavaScript Development",
+        description: "Creating interactive browser experiences.",
+        items: ["DOM Manipulation", "JavaScript Events"]
     },
     {
-      category: "Async & Data",
-      description: "Working with data from APIs.",
-      items: ["Fetch API", "Async/Await"]
+        category: "APIs & Data",
+        description: "Connecting front-end interfaces to external data.",
+        items: ["Fetch API", "Async/Await"]
     },
     {
-      category: "Tools",
-      description: "Version control and collaboration.",
-      items: ["Git", "GitHub"]
+        category: "Development Tools",
+        description: "Managing code and project versions.",
+        items: ["Git", "GitHub"]
     }
-  ],
+],
 
   /* Projects
      - liveUrl / sourceUrl: leave "" until you have the real link.
@@ -68,13 +67,13 @@ window.PORTFOLIO_CONFIG = {
     {
       id: "al-masai-school",
       name: "Al-Masai School Website",
-      summary: "A school website with Arabic RTL support, responsive pages, registration features, and a backend connected to PostgreSQL.",
+     summary: "An Arabic RTL school website developed with responsive web design, student registration features, and a backend connected to PostgreSQL.",
       image: "assets/images/projects/al-masai-1.webp",
       imageAlt: "Home page of the Al-Masai School Website with an Arabic right-to-left layout",
       technologies: ["HTML5", "CSS3", "JavaScript", "PostgreSQL"],
       liveUrl: "",
       sourceUrl: "",
-      overview: "A website for a school that supports Arabic with a right-to-left (RTL) layout. It has responsive pages and registration features, backed by a server that stores data in a PostgreSQL database.",
+      overview: "Al-Masai School Website is an Arabic right-to-left (RTL) school web project built with HTML, CSS, and JavaScript. It includes responsive pages, student registration features, and backend integration with a PostgreSQL database.",
       features: [
         "Arabic content with full right-to-left (RTL) layout support",
         "Responsive pages that adapt to different screen sizes",
