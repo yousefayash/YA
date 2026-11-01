@@ -403,7 +403,7 @@ button {
     direction: rtl;
 }
 .text-gradient {
-  background: linear-gradient(120deg, #dada 0%, #35a7ff 70%);
+  background: linear-gradient(120deg, #F7E998 0%, #35a7ff 70%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
