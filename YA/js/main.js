@@ -524,6 +524,67 @@
     syncButton();
   }
 
+  const typingText = document.querySelector(".typing-text");
+
+const words = [
+  "Front-End Developer",
+   "Problem Solver",
+  "JavaScript Developer",
+  "Future Software Engineer",
+  "Responsive Web Designer",
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+  const currentWord = words[wordIndex];
+
+  if (isDeleting) {
+    charIndex--;
+  } else {
+    charIndex++;
+  }
+
+  typingText.textContent = currentWord.substring(0, charIndex);
+
+  let speed = isDeleting ? 50 : 100;
+
+  if (!isDeleting && charIndex === currentWord.length) {
+    speed = 1500;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+    speed = 400;
+  }
+
+  setTimeout(typeEffect, speed);
+}
+
+typeEffect();
+
+const copyPhoneButton = document.querySelector(".copy-phone");
+
+copyPhoneButton?.addEventListener("click", async () => {
+    const phoneNumber = document.querySelector("#phone-number").textContent.trim();
+
+    try {
+        await navigator.clipboard.writeText(phoneNumber);
+
+        copyPhoneButton.innerHTML = '<i class="fa-solid fa-check"></i>';
+        copyPhoneButton.title = "Copied!";
+
+        setTimeout(() => {
+            copyPhoneButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+            copyPhoneButton.title = "Copy phone number";
+        }, 1800);
+    } catch (error) {
+        console.error("Could not copy phone number:", error);
+    }
+});
+
   /* ---------- Start ---------- */
 
   setupThemeToggle();
